@@ -1,0 +1,10 @@
+{
+  "name": "FTL-Ships",
+  "version": "1.0.0",
+  "factorio_version": "1.1",
+  "title": "FTL Ships",
+  "author": "Pankeko",
+  "homepage": "",
+  "description": "FTL Ships",
+  "dependencies": ["base"]
+}
