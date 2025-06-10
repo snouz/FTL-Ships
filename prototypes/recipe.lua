@@ -1,25 +1,26 @@
-data:extend
-({
+local icons = "__FTL-Ships__/graphics/icons/"
+
+data:extend({
   {
     type = "recipe",
     name = "se-space_Elite",
-    enabled = true,
+    enabled = false,
     ingredients =
     {
-       {"electric-engine-unit",128},
-       {"steel-plate",300},
-       {"iron-plate",500},
-       {"electronic-circuit",40},
-	   {"engine-unit", 5},
-	   {"rocket-launcher",2}
+      {type = "item", name = "electric-engine-unit", amount = 128},
+      {type = "item", name = "steel-plate", amount = 300},
+      {type = "item", name = "iron-plate", amount = 500},
+      {type = "item", name = "electronic-circuit", amount = 40},
+      {type = "item", name = "engine-unit", amount = 5},
+      {type = "item", name = "rocket-launcher", amount = 2},
     },
-    result = "se-space_Elite"
+    results = {{type = "item", name ="se-space_Elite", amount = 1}}
   },
   {
     type = "item-with-entity-data",
     name = "se-space_Elite",
-    icon = "__FTL-Ships__/graphics/Icons/Elite.png",
-    icon_size = 128,
+    icon = icons .. "Elite.png",
+    icon_size = 64,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
     place_result = "se-space_Elite",
@@ -27,28 +28,27 @@ data:extend
   }
 })
 
-data:extend
-({
+data:extend({
   {
     type = "recipe",
     name = "se-space_Kestrel",
-    enabled = true,
+    enabled = false,
     ingredients =
     {
-       {"electric-engine-unit",128},
-       {"steel-plate",300},
-       {"iron-plate",500},
-       {"electronic-circuit",40},
-	   {"engine-unit", 5},
-	   {"rocket-launcher",2}
+      {type = "item", name = "electric-engine-unit", amount = 128},
+      {type = "item", name = "steel-plate", amount = 300},
+      {type = "item", name = "iron-plate", amount = 500},
+      {type = "item", name = "electronic-circuit", amount = 40},
+      {type = "item", name = "engine-unit", amount = 5},
+      {type = "item", name = "rocket-launcher", amount = 2},
     },
-    result = "se-space_Kestrel"
+    results = {{type = "item", name ="se-space_Kestrel", amount = 1}}
   },
   {
     type = "item-with-entity-data",
     name = "se-space_Kestrel",
-    icon = "__FTL-Ships__/graphics/Icons/Kestrel.png",
-    icon_size = 128,
+    icon = icons .. "Kestrel.png",
+    icon_size = 64,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
     place_result = "se-space_Kestrel",
@@ -56,28 +56,27 @@ data:extend
   }
 })
 
-data:extend
-({
+data:extend({
   {
     type = "recipe",
     name = "se-space_Stealth",
-    enabled = true,
+    enabled = false,
     ingredients =
     {
-       {"electric-engine-unit",128},
-       {"steel-plate",300},
-       {"iron-plate",500},
-       {"electronic-circuit",40},
-	   {"engine-unit", 5},
-	   {"rocket-launcher",2}
+      {type = "item", name = "electric-engine-unit", amount = 128},
+      {type = "item", name = "steel-plate", amount = 300},
+      {type = "item", name = "iron-plate", amount = 500},
+      {type = "item", name = "electronic-circuit", amount = 40},
+      {type = "item", name = "engine-unit", amount = 5},
+      {type = "item", name = "rocket-launcher", amount = 2},
     },
-    result = "se-space_Stealth"
+    results = {{type = "item", name ="se-space_Stealth", amount = 1}}
   },
   {
     type = "item-with-entity-data",
     name = "se-space_Stealth",
-    icon = "__FTL-Ships__/graphics/Icons/Stealth.png",
-    icon_size = 128,
+    icon = icons .. "Stealth.png",
+    icon_size = 64,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
     place_result = "se-space_Stealth",
@@ -85,28 +84,27 @@ data:extend
   }
 })
 
-data:extend
-({
+data:extend({
   {
     type = "recipe",
     name = "se-space_Rigger",
-    enabled = true,
+    enabled = false,
     ingredients =
     {
-       {"electric-engine-unit",128},
-       {"steel-plate",300},
-       {"iron-plate",500},
-       {"electronic-circuit",40},
-	   {"engine-unit", 5},
-	   {"rocket-launcher",2}
+      {type = "item", name = "electric-engine-unit", amount = 128},
+      {type = "item", name = "steel-plate", amount = 300},
+      {type = "item", name = "iron-plate", amount = 500},
+      {type = "item", name = "electronic-circuit", amount = 40},
+      {type = "item", name = "engine-unit", amount = 5},
+      {type = "item", name = "rocket-launcher", amount = 2},
     },
-    result = "se-space_Rigger"
+    results = {{type = "item", name ="se-space_Rigger", amount = 1}}
   },
   {
     type = "item-with-entity-data",
     name = "se-space_Rigger",
-    icon = "__FTL-Ships__/graphics/Icons/Rigger.png",
-    icon_size = 128,
+    icon = icons .. "Rigger.png",
+    icon_size = 64,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
     place_result = "se-space_Rigger",
@@ -114,28 +112,27 @@ data:extend
   }
 })
 
-data:extend
-({
+data:extend({
   {
     type = "recipe",
     name = "se-space_Flagship",
-    enabled = true,
+    enabled = false,
     ingredients =
     {
-       {"electric-engine-unit",328},
-       {"steel-plate",600},
-       {"iron-plate",800},
-       {"electronic-circuit",90},
-	   {"engine-unit", 100},
-	   {"rocket-launcher",2}
+      {type = "item", name = "electric-engine-unit", amount = 328},
+      {type = "item", name = "steel-plate", amount = 600},
+      {type = "item", name = "iron-plate", amount = 800},
+      {type = "item", name = "electronic-circuit", amount = 90},
+      {type = "item", name = "engine-unit", amount = 100},
+      {type = "item", name = "rocket-launcher", amount = 2},
     },
-    result = "se-space_Flagship"
+    results = {{type = "item", name ="se-space_Flagship", amount = 1}}
   },
   {
     type = "item-with-entity-data",
     name = "se-space_Flagship",
-    icon = "__FTL-Ships__/graphics/Icons/Flagship.png",
-    icon_size = 128,
+    icon = icons .. "Flagship.png",
+    icon_size = 64,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
     place_result = "se-space_Flagship",
@@ -143,28 +140,27 @@ data:extend
   }
 })
 
-data:extend
-({
+data:extend({
   {
     type = "recipe",
     name = "se-space_Fighter",
-    enabled = true,
+    enabled = false,
     ingredients =
     {
-       {"electric-engine-unit",128},
-       {"steel-plate",300},
-       {"iron-plate",500},
-       {"electronic-circuit",40},
-	   {"engine-unit", 5},
-	   {"rocket-launcher",2}
+      {type = "item", name = "electric-engine-unit", amount = 128},
+      {type = "item", name = "steel-plate", amount = 300},
+      {type = "item", name = "iron-plate", amount = 500},
+      {type = "item", name = "electronic-circuit", amount = 40},
+      {type = "item", name = "engine-unit", amount = 5},
+      {type = "item", name = "rocket-launcher", amount = 2},
     },
-    result = "se-space_Fighter"
+    results = {{type = "item", name ="se-space_Fighter", amount = 1}}
   },
   {
     type = "item-with-entity-data",
     name = "se-space_Fighter",
-    icon = "__FTL-Ships__/graphics/Icons/Fighter.png",
-    icon_size = 128,
+    icon = icons .. "Fighter.png",
+    icon_size = 64,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
     place_result = "se-space_Fighter",
@@ -172,28 +168,27 @@ data:extend
   }
 })
 
-data:extend
-({
+data:extend({
   {
     type = "recipe",
     name = "se-space_Auto_Scout",
-    enabled = true,
+    enabled = false,
     ingredients =
     {
-       {"electric-engine-unit",128},
-       {"steel-plate",200},
-       {"iron-plate",100},
-       {"electronic-circuit",40},
-	   {"engine-unit", 5},
-	   {"rocket-launcher",2}
+      {type = "item", name = "electric-engine-unit", amount = 128},
+      {type = "item", name = "steel-plate", amount = 200},
+      {type = "item", name = "iron-plate", amount = 100},
+      {type = "item", name = "electronic-circuit", amount = 40},
+      {type = "item", name = "engine-unit", amount = 5},
+      {type = "item", name = "rocket-launcher", amount = 2},
     },
-    result = "se-space_Auto_Scout"
+    results = {{type = "item", name ="se-space_Auto_Scout", amount = 1}}
   },
   {
     type = "item-with-entity-data",
     name = "se-space_Auto_Scout",
-    icon = "__FTL-Ships__/graphics/Icons/Auto_Scout.png",
-    icon_size = 128,
+    icon = icons .. "Auto_Scout.png",
+    icon_size = 64,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
     place_result = "se-space_Auto_Scout",
@@ -201,28 +196,27 @@ data:extend
   }
 })
 
-data:extend
-({
+data:extend({
   {
     type = "recipe",
     name = "se-space_Auto_Assault",
-    enabled = true,
+    enabled = false,
     ingredients =
     {
-       {"electric-engine-unit",128},
-       {"steel-plate",500},
-       {"iron-plate",300},
-       {"electronic-circuit",50},
-	   {"engine-unit", 50},
-	   {"rocket-launcher",2}
+      {type = "item", name = "electric-engine-unit", amount = 128},
+      {type = "item", name = "steel-plate", amount = 500},
+      {type = "item", name = "iron-plate", amount = 300},
+      {type = "item", name = "electronic-circuit", amount = 50},
+      {type = "item", name = "engine-unit", amount = 50},
+      {type = "item", name = "rocket-launcher", amount = 2},
     },
-    result = "se-space_Auto_Assault"
+    results = {{type = "item", name ="se-space_Auto_Assault", amount = 1}}
   },
   {
     type = "item-with-entity-data",
     name = "se-space_Auto_Assault",
-    icon = "__FTL-Ships__/graphics/Icons/Auto_Assault.png",
-    icon_size = 128,
+    icon = icons .. "Auto_Assault.png",
+    icon_size = 64,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
     place_result = "se-space_Auto_Assault",
@@ -230,28 +224,27 @@ data:extend
   }
 })
 
-data:extend
-({
+data:extend({
   {
     type = "recipe",
     name = "se-space_Fed_Cruiser",
-    enabled = true,
+    enabled = false,
     ingredients =
     {
-       {"electric-engine-unit",128},
-       {"steel-plate",300},
-       {"iron-plate",500},
-       {"electronic-circuit",40},
-	   {"engine-unit", 50},
-	   {"rocket-launcher",2}
+      {type = "item", name = "electric-engine-unit", amount = 128},
+      {type = "item", name = "steel-plate", amount = 300},
+      {type = "item", name = "iron-plate", amount = 500},
+      {type = "item", name = "electronic-circuit", amount = 40},
+      {type = "item", name = "engine-unit", amount = 50},
+      {type = "item", name = "rocket-launcher", amount = 2},
     },
-    result = "se-space_Fed_Cruiser"
+    results = {{type = "item", name ="se-space_Fed_Cruiser", amount = 1}}
   },
   {
     type = "item-with-entity-data",
     name = "se-space_Fed_Cruiser",
-    icon = "__FTL-Ships__/graphics/Icons/Fed_Cruiser.png",
-    icon_size = 128,
+    icon = icons .. "Fed_Cruiser.png",
+    icon_size = 64,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
     place_result = "se-space_Fed_Cruiser",
@@ -259,28 +252,27 @@ data:extend
   }
 })
 
-data:extend
-({
+data:extend({
   {
     type = "recipe",
     name = "se-space_Fed_Scout",
-    enabled = true,
+    enabled = false,
     ingredients =
     {
-       {"electric-engine-unit",128},
-       {"steel-plate",300},
-       {"iron-plate",500},
-       {"electronic-circuit",40},
-	   {"engine-unit", 50},
-	   {"rocket-launcher",2}
+      {type = "item", name = "electric-engine-unit", amount = 128},
+      {type = "item", name = "steel-plate", amount = 300},
+      {type = "item", name = "iron-plate", amount = 500},
+      {type = "item", name = "electronic-circuit", amount = 40},
+      {type = "item", name = "engine-unit", amount = 50},
+      {type = "item", name = "rocket-launcher", amount = 2},
     },
-    result = "se-space_Fed_Scout"
+    results = {{type = "item", name ="se-space_Fed_Scout", amount = 1}}
   },
   {
     type = "item-with-entity-data",
     name = "se-space_Fed_Scout",
-    icon = "__FTL-Ships__/graphics/Icons/Fed_Scout.png",
-    icon_size = 128,
+    icon = icons .. "Fed_Scout.png",
+    icon_size = 64,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
     place_result = "se-space_Fed_Scout",
@@ -288,28 +280,27 @@ data:extend
   }
 })
 
-data:extend
-({
+data:extend({
   {
     type = "recipe",
     name = "se-space_Bomber",
-    enabled = true,
+    enabled = false,
     ingredients =
     {
-       {"electric-engine-unit",128},
-       {"steel-plate",300},
-       {"iron-plate",200},
-       {"electronic-circuit",40},
-	   {"engine-unit", 50},
-	   {"rocket-launcher",2}
+      {type = "item", name = "electric-engine-unit", amount = 128},
+      {type = "item", name = "steel-plate", amount = 300},
+      {type = "item", name = "iron-plate", amount = 200},
+      {type = "item", name = "electronic-circuit", amount = 40},
+      {type = "item", name = "engine-unit", amount = 50},
+      {type = "item", name = "rocket-launcher", amount = 2},
     },
-    result = "se-space_Bomber"
+    results = {{type = "item", name ="se-space_Bomber", amount = 1}}
   },
   {
     type = "item-with-entity-data",
     name = "se-space_Bomber",
-    icon = "__FTL-Ships__/graphics/Icons/Bomber.png",
-    icon_size = 128,
+    icon = icons .. "Bomber.png",
+    icon_size = 64,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
     place_result = "se-space_Bomber",
