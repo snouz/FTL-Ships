@@ -1665,188 +1665,6 @@ data:extend
    }
 })
 
-data:extend
-({
-	{
-    type = "car",
-    name = "Fed_Scout",
-    icon = "__FTL-Ships__/graphics/Icons/Fed_Scout.png",
-    icon_size = 128,
-    flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
-    minable = {mining_time = 1, result = "Fed_Scout"},
-    max_health = 1000,
-	open_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
-    close_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
-    rotation_speed = 0.006,
-    weight = 800,
-	guns = { "tank-cannon", "tank-flamethrower", "rocket-launcher", "rocket-launcher"},
-        inventory_size = 40,
-	has_belt_immunity = true,
-    corpse = "big-remnants",
-    dying_explosion = "massive-explosion",
-    energy_per_hit_point = 1,
-	equipment_grid="ftl-equipment-grid",
-    resistances =
-    {
-      {
-        type = "fire",
-        percent = 80
-      },
-      {
-        type = "impact",
-        percent = 50,
-        decrease = 50
-      }
-    },
-    collision_box = {{-1, -3}, {1, 0}},
-	collision_mask = {},
-    selection_box = {{-1, -3}, {1, 0}},
-    effectivity = 0.5,
-    braking_power = "9000kW",
-    burner =
-    {
-      effectivity = 0.8,
-      fuel_inventory_size = 3,
-      smoke =
-      {
-        {
-          name = "car-smoke",
-          deviation = {0.5, 0.5},
-          frequency = 750,
-          position = {2.5, 2.0},
-          starting_frame = 0,
-          starting_frame_deviation = 0
-        },
-        {
-          name = "car-smoke",
-          deviation = {-0.5, 0.5},
-          frequency = 750,
-          position = {-2.5, 2.0},
-          starting_frame = 0,
-          starting_frame_deviation = 0
-        }
-      }
-    },
-    consumption = "7000kW",
-    terrain_friction_modifier = 0,
-    friction = 0.003,
-    light =
-    {
-      {
-        type = "oriented",
-        minimum_darkness = 0.3,
-        picture =
-        {
-          filename = "__core__/graphics/light-cone.png",
-          priority = "medium",
-          scale = 3,
-          width = 200,
-          height = 200
-        },
-        shift = {-1.0, -30},
-        size = 3,
-        intensity = 0.9
-      },
-      {
-        type = "oriented",
-        minimum_darkness = 0.3,
-        picture =
-        {
-          filename = "__core__/graphics/light-cone.png",
-          priority = "medium",
-          scale = 3,
-          width = 200,
-          height = 200
-        },
-        shift = {1.0, -30},
-        size = 3,
-        intensity = 0.9
-      }
-    },
-	render_layer = "wires-above", 
-	final_render_layer = "wires-above",
-	--this mf keeps blinking for some reason??????
-    animation =
-	{
-	  layers =
-	  {
-		{
-                width = 4016/8,
-                height = 4016/8,
-                frame_count = 1,
-                direction_count = 128,
-                shift = {0.0, 0.0},
-                animation_speed = animation_speed,
-                max_advance = 1,
-				scale = 1,
-                priority = "extra-high",
-                stripes =
-		{
-	       { filename = "__FTL-Ships__/graphics/Fed_Scout_a.png", width_in_frames = 8, height_in_frames = 8, },
-		   { filename = "__FTL-Ships__/graphics/Fed_Scout_b.png", width_in_frames = 8, height_in_frames = 8, },
-		   }
-		 },
-		{
-		  width = 4016/8,
-		  height = 4016/8,
-		  frame_count = 1,
-		  draw_as_shadow = true,
-		  direction_count = 128,
-		  shift = {1.7, 0.9},
-		  scale = 1.05,
-		  max_advance = 1,
-		  priority = "medium",
-		  stripes =  {
-			{ filename = "__FTL-Ships__/graphics/Shadows/Fed_Scout_a_Shadow.png", width_in_frames = 8, height_in_frames = 8, },
-			{ filename = "__FTL-Ships__/graphics/Shadows/Fed_Scout_b_Shadow.png", width_in_frames = 8, height_in_frames = 8, },
-		  }
-		},
-	  },
-	 },
-    sound_no_fuel =
-    {
-      {
-        filename = "__FTL-Ships__/sounds/out_of_fuel_distress.ogg",
-        volume = 0.6
-      },
-    },
-    stop_trigger_speed = 0,
-    stop_trigger =
-    {
-      {
-        type = "play-sound",
-        sound =
-        {
-          {
-            filename = "__FTL-Ships__/sounds/ftl_jump_arrive.ogg",
-            volume = 0.6
-          },
-        }
-      },
-    },
-    sound_minimum_speed = 0.5;
-    vehicle_impact_sound =  { filename = "__FTL-Ships__/sounds/shield_hit2.ogg", volume = 0.65 },
-    working_sound =
-    {
-      sound =
-      {
-        filename = "__FTL-Ships__/sounds/engines_on.ogg",
-        volume = 0.6
-      },
-      activate_sound =
-      {
-        filename = "__FTL-Ships__/sounds/ftl_jump_start.ogg",
-        volume = 0.6
-      },
-      deactivate_sound =
-      {
-        filename = "__FTL-Ships__/sounds/engines_off.ogg",
-        volume = 0.9
-      },
-      match_speed_to_activity = false,
-    },
-   }
-})
 
 data:extend
 ({
@@ -1981,6 +1799,189 @@ data:extend
 		  stripes =  {
 			{ filename = "__FTL-Ships__/graphics/Shadows/Bomber_a_Shadow.png", width_in_frames = 8, height_in_frames = 8 },
 			{ filename = "__FTL-Ships__/graphics/Shadows/Bomber_b_Shadow.png", width_in_frames = 8, height_in_frames = 8 },
+		  }
+		},
+	  },
+	 },
+    sound_no_fuel =
+    {
+      {
+        filename = "__FTL-Ships__/sounds/out_of_fuel_distress.ogg",
+        volume = 0.6
+      },
+    },
+    stop_trigger_speed = 0,
+    stop_trigger =
+    {
+      {
+        type = "play-sound",
+        sound =
+        {
+          {
+            filename = "__FTL-Ships__/sounds/ftl_jump_arrive.ogg",
+            volume = 0.6
+          },
+        }
+      },
+    },
+    sound_minimum_speed = 0.5;
+    vehicle_impact_sound =  { filename = "__FTL-Ships__/sounds/shield_hit2.ogg", volume = 0.65 },
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__FTL-Ships__/sounds/engines_on.ogg",
+        volume = 0.6
+      },
+      activate_sound =
+      {
+        filename = "__FTL-Ships__/sounds/ftl_jump_start.ogg",
+        volume = 0.6
+      },
+      deactivate_sound =
+      {
+        filename = "__FTL-Ships__/sounds/engines_off.ogg",
+        volume = 0.9
+      },
+      match_speed_to_activity = false,
+    },
+   }
+})
+
+
+data:extend
+({
+	{
+    type = "car",
+    name = "Fed_Scout",
+    icon = "__FTL-Ships__/graphics/Icons/Fed_Scout.png",
+    icon_size = 128,
+    flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
+    minable = {mining_time = 1, result = "Fed_Scout"},
+    max_health = 1500,
+	open_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
+    close_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
+    rotation_speed = 0.006,
+    weight = 800,
+	guns = { "tank-cannon", "tank-flamethrower", "rocket-launcher", "rocket-launcher"},
+        inventory_size = 40,
+	has_belt_immunity = true,
+    corpse = "big-remnants",
+    dying_explosion = "massive-explosion",
+    energy_per_hit_point = 1,
+	equipment_grid="ftl-equipment-grid",
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 80
+      },
+      {
+        type = "impact",
+        percent = 50,
+        decrease = 50
+      }
+    },
+    collision_box = {{-2, -3}, {2, 1}},
+	collision_mask = {},
+    selection_box = {{-2, -3}, {2, 1}},
+    effectivity = 0.5,
+    braking_power = "9000kW",
+    burner =
+    {
+      effectivity = 0.8,
+      fuel_inventory_size = 3,
+      smoke =
+      {
+        {
+          name = "car-smoke",
+          deviation = {0.5, 0.5},
+          frequency = 750,
+          position = {2.5, 3},
+          starting_frame = 0,
+          starting_frame_deviation = 0
+        },
+        {
+          name = "car-smoke",
+          deviation = {-0.5, 0.5},
+          frequency = 750,
+          position = {-2.5, 3},
+          starting_frame = 0,
+          starting_frame_deviation = 0
+        }
+      }
+    },
+    consumption = "7000kW",
+    terrain_friction_modifier = 0,
+    friction = 0.003,
+    light =
+    {
+      {
+        type = "oriented",
+        minimum_darkness = 0.3,
+        picture =
+        {
+          filename = "__core__/graphics/light-cone.png",
+          priority = "medium",
+          scale = 3,
+          width = 200,
+          height = 200
+        },
+        shift = {-1.0, -30},
+        size = 3,
+        intensity = 0.9
+      },
+      {
+        type = "oriented",
+        minimum_darkness = 0.3,
+        picture =
+        {
+          filename = "__core__/graphics/light-cone.png",
+          priority = "medium",
+          scale = 3,
+          width = 200,
+          height = 200
+        },
+        shift = {1.0, -30},
+        size = 3,
+        intensity = 0.9
+      }
+    },
+	render_layer = "wires-above", 
+	final_render_layer = "wires-above",
+    animation =
+	{
+	  layers =
+	  {
+		{
+                width = 4016/8,
+                height = 4016/8,
+                frame_count = 1,
+                direction_count = 128,
+                shift = {0.0, -0.0},
+				scale = 0.9,
+                animation_speed = animation_speed,
+                max_advance = 1,
+                priority = "extra-high",
+                stripes =
+		{
+	       { filename = "__FTL-Ships__/graphics/Fed_Scout_a.png", width_in_frames = 8, height_in_frames = 8, },
+		   { filename = "__FTL-Ships__/graphics/Fed_Scout_b.png", width_in_frames = 8, height_in_frames = 8, },
+		   }
+		 },
+		{
+		  width = 4016/8,
+		  height = 4016/8,
+		  frame_count = 1,
+		  draw_as_shadow = true,
+		  direction_count = 128,
+		  shift = {1.25, 1.5},
+		  scale = 1.01,
+		  max_advance = 1,
+		  priority = "low",
+		  stripes =  {
+			{ filename = "__FTL-Ships__/graphics/Shadows/Fed_Scout_a_Shadow.png", width_in_frames = 8, height_in_frames = 8 },
+			{ filename = "__FTL-Ships__/graphics/Shadows/Fed_Scout_b_Shadow.png", width_in_frames = 8, height_in_frames = 8 },
 		  }
 		},
 	  },
