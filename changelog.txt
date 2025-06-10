@@ -1,18 +1,28 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.0
+Date: 2025-06-
+  Info:
+    - Update by snouz
+  Changes:
+    - 2.0 update
+    - Simplified code
+    - Made ships unlock with research
+  Graphics:
+    - Adjusted shadows
+    - Added engine glow
+---------------------------------------------------------------------------------------------------
 Version: 1.0.2
-Date: 14. 07. 2022
-  Features:
+Date: 2022-07-14
+  Compatibility:
     - Added SE Compability, you can now use them in space!
-
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.1
-Date: 27. 06. 2022
-  Features:
+Date: 2022-06-27
+  Bugfixes:
     - Fixed Rebel Bomber to Federation Bomber
     - Fixed flickering graphics on Federation Scout
-
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.0
-Date: 26. 06. 2022
-  Features:
-    - Initiial Release
+Date: 2022-06-26
+  Info:
+    - Initial Release
