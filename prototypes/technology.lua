@@ -7,47 +7,47 @@ data:extend( { {
     effects = {
         {
             type = "unlock-recipe",
-            recipe = "Auto_Assault",
+            recipe = "se-space_Auto_Assault",
         },
 		        {
             type = "unlock-recipe",
-            recipe = "Auto_Scout",
+            recipe = "se-space_Auto_Scout",
         },
 		        {
             type = "unlock-recipe",
-            recipe = "Bomber",
+            recipe = "se-space_Bomber",
         },
 		        {
             type = "unlock-recipe",
-            recipe = "Elite",
+            recipe = "se-space_Elite",
         },
 		        {
             type = "unlock-recipe",
-            recipe = "Fed_Cruiser",
+            recipe = "se-space_Fed_Cruiser",
         },
 		        {
             type = "unlock-recipe",
-            recipe = "Fed_Scout",
+            recipe = "se-space_Fed_Scout",
         },
 		        {
             type = "unlock-recipe",
-            recipe = "Fighter",
+            recipe = "se-space_Fighter",
         },
 		        {
             type = "unlock-recipe",
-            recipe = "Flagship",
+            recipe = "se-space_Flagship",
         },
 		        {
             type = "unlock-recipe",
-            recipe = "Kestrel",
+            recipe = "se-space_Kestrel",
         },
 		        {
             type = "unlock-recipe",
-            recipe = "Rigger",
+            recipe = "se-space_Rigger",
         },
 		        {
             type = "unlock-recipe",
-            recipe = "Stealth",
+            recipe = "se-space_Stealth",
         }
     },
     prerequisites = {"automobilism"},

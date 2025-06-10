@@ -2,7 +2,7 @@ data:extend
 ({
   {
     type = "recipe",
-    name = "Elite",
+    name = "se-space_Elite",
     enabled = true,
     ingredients =
     {
@@ -13,16 +13,16 @@ data:extend
 	   {"engine-unit", 5},
 	   {"rocket-launcher",2}
     },
-    result = "Elite"
+    result = "se-space_Elite"
   },
   {
     type = "item-with-entity-data",
-    name = "Elite",
+    name = "se-space_Elite",
     icon = "__FTL-Ships__/graphics/Icons/Elite.png",
     icon_size = 128,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
-    place_result = "Elite",
+    place_result = "se-space_Elite",
     stack_size = 1
   }
 })
@@ -31,7 +31,7 @@ data:extend
 ({
   {
     type = "recipe",
-    name = "Kestrel",
+    name = "se-space_Kestrel",
     enabled = true,
     ingredients =
     {
@@ -42,16 +42,16 @@ data:extend
 	   {"engine-unit", 5},
 	   {"rocket-launcher",2}
     },
-    result = "Kestrel"
+    result = "se-space_Kestrel"
   },
   {
     type = "item-with-entity-data",
-    name = "Kestrel",
+    name = "se-space_Kestrel",
     icon = "__FTL-Ships__/graphics/Icons/Kestrel.png",
     icon_size = 128,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
-    place_result = "Kestrel",
+    place_result = "se-space_Kestrel",
     stack_size = 1
   }
 })
@@ -60,7 +60,7 @@ data:extend
 ({
   {
     type = "recipe",
-    name = "Stealth",
+    name = "se-space_Stealth",
     enabled = true,
     ingredients =
     {
@@ -71,16 +71,16 @@ data:extend
 	   {"engine-unit", 5},
 	   {"rocket-launcher",2}
     },
-    result = "Stealth"
+    result = "se-space_Stealth"
   },
   {
     type = "item-with-entity-data",
-    name = "Stealth",
+    name = "se-space_Stealth",
     icon = "__FTL-Ships__/graphics/Icons/Stealth.png",
     icon_size = 128,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
-    place_result = "Stealth",
+    place_result = "se-space_Stealth",
     stack_size = 1
   }
 })
@@ -89,7 +89,7 @@ data:extend
 ({
   {
     type = "recipe",
-    name = "Rigger",
+    name = "se-space_Rigger",
     enabled = true,
     ingredients =
     {
@@ -100,16 +100,16 @@ data:extend
 	   {"engine-unit", 5},
 	   {"rocket-launcher",2}
     },
-    result = "Rigger"
+    result = "se-space_Rigger"
   },
   {
     type = "item-with-entity-data",
-    name = "Rigger",
+    name = "se-space_Rigger",
     icon = "__FTL-Ships__/graphics/Icons/Rigger.png",
     icon_size = 128,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
-    place_result = "Rigger",
+    place_result = "se-space_Rigger",
     stack_size = 1
   }
 })
@@ -118,7 +118,7 @@ data:extend
 ({
   {
     type = "recipe",
-    name = "Flagship",
+    name = "se-space_Flagship",
     enabled = true,
     ingredients =
     {
@@ -129,16 +129,16 @@ data:extend
 	   {"engine-unit", 100},
 	   {"rocket-launcher",2}
     },
-    result = "Flagship"
+    result = "se-space_Flagship"
   },
   {
     type = "item-with-entity-data",
-    name = "Flagship",
+    name = "se-space_Flagship",
     icon = "__FTL-Ships__/graphics/Icons/Flagship.png",
     icon_size = 128,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
-    place_result = "Flagship",
+    place_result = "se-space_Flagship",
     stack_size = 1
   }
 })
@@ -147,7 +147,7 @@ data:extend
 ({
   {
     type = "recipe",
-    name = "Fighter",
+    name = "se-space_Fighter",
     enabled = true,
     ingredients =
     {
@@ -158,16 +158,16 @@ data:extend
 	   {"engine-unit", 5},
 	   {"rocket-launcher",2}
     },
-    result = "Fighter"
+    result = "se-space_Fighter"
   },
   {
     type = "item-with-entity-data",
-    name = "Fighter",
+    name = "se-space_Fighter",
     icon = "__FTL-Ships__/graphics/Icons/Fighter.png",
     icon_size = 128,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
-    place_result = "Fighter",
+    place_result = "se-space_Fighter",
     stack_size = 1
   }
 })
@@ -176,7 +176,7 @@ data:extend
 ({
   {
     type = "recipe",
-    name = "Auto_Scout",
+    name = "se-space_Auto_Scout",
     enabled = true,
     ingredients =
     {
@@ -187,16 +187,16 @@ data:extend
 	   {"engine-unit", 5},
 	   {"rocket-launcher",2}
     },
-    result = "Auto_Scout"
+    result = "se-space_Auto_Scout"
   },
   {
     type = "item-with-entity-data",
-    name = "Auto_Scout",
+    name = "se-space_Auto_Scout",
     icon = "__FTL-Ships__/graphics/Icons/Auto_Scout.png",
     icon_size = 128,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
-    place_result = "Auto_Scout",
+    place_result = "se-space_Auto_Scout",
     stack_size = 1
   }
 })
@@ -205,7 +205,7 @@ data:extend
 ({
   {
     type = "recipe",
-    name = "Auto_Assault",
+    name = "se-space_Auto_Assault",
     enabled = true,
     ingredients =
     {
@@ -216,16 +216,16 @@ data:extend
 	   {"engine-unit", 50},
 	   {"rocket-launcher",2}
     },
-    result = "Auto_Assault"
+    result = "se-space_Auto_Assault"
   },
   {
     type = "item-with-entity-data",
-    name = "Auto_Assault",
+    name = "se-space_Auto_Assault",
     icon = "__FTL-Ships__/graphics/Icons/Auto_Assault.png",
     icon_size = 128,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
-    place_result = "Auto_Assault",
+    place_result = "se-space_Auto_Assault",
     stack_size = 1
   }
 })
@@ -234,7 +234,7 @@ data:extend
 ({
   {
     type = "recipe",
-    name = "Fed_Cruiser",
+    name = "se-space_Fed_Cruiser",
     enabled = true,
     ingredients =
     {
@@ -245,16 +245,16 @@ data:extend
 	   {"engine-unit", 50},
 	   {"rocket-launcher",2}
     },
-    result = "Fed_Cruiser"
+    result = "se-space_Fed_Cruiser"
   },
   {
     type = "item-with-entity-data",
-    name = "Fed_Cruiser",
+    name = "se-space_Fed_Cruiser",
     icon = "__FTL-Ships__/graphics/Icons/Fed_Cruiser.png",
     icon_size = 128,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
-    place_result = "Fed_Cruiser",
+    place_result = "se-space_Fed_Cruiser",
     stack_size = 1
   }
 })
@@ -263,7 +263,7 @@ data:extend
 ({
   {
     type = "recipe",
-    name = "Fed_Scout",
+    name = "se-space_Fed_Scout",
     enabled = true,
     ingredients =
     {
@@ -274,16 +274,16 @@ data:extend
 	   {"engine-unit", 50},
 	   {"rocket-launcher",2}
     },
-    result = "Fed_Scout"
+    result = "se-space_Fed_Scout"
   },
   {
     type = "item-with-entity-data",
-    name = "Fed_Scout",
+    name = "se-space_Fed_Scout",
     icon = "__FTL-Ships__/graphics/Icons/Fed_Scout.png",
     icon_size = 128,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
-    place_result = "Fed_Scout",
+    place_result = "se-space_Fed_Scout",
     stack_size = 1
   }
 })
@@ -292,7 +292,7 @@ data:extend
 ({
   {
     type = "recipe",
-    name = "Bomber",
+    name = "se-space_Bomber",
     enabled = true,
     ingredients =
     {
@@ -303,16 +303,16 @@ data:extend
 	   {"engine-unit", 50},
 	   {"rocket-launcher",2}
     },
-    result = "Bomber"
+    result = "se-space_Bomber"
   },
   {
     type = "item-with-entity-data",
-    name = "Bomber",
+    name = "se-space_Bomber",
     icon = "__FTL-Ships__/graphics/Icons/Bomber.png",
     icon_size = 128,
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
-    place_result = "Bomber",
+    place_result = "se-space_Bomber",
     stack_size = 1
   }
 })

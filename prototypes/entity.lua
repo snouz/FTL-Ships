@@ -2,11 +2,11 @@ data:extend
 ({
 	{
     type = "car",
-    name = "Elite",
+    name = "se-space_Elite",
     icon = "__FTL-Ships__/graphics/Icons/Elite.png",
     icon_size = 128,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
-    minable = {mining_time = 1, result = "Elite"},
+    minable = {mining_time = 1, result = "se-space_Elite"},
     max_health = 2500,
 	open_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
     close_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
@@ -184,11 +184,11 @@ data:extend
 ({
 	{
     type = "car",
-    name = "Kestrel",
+    name = "se-space_Kestrel",
     icon = "__FTL-Ships__/graphics/Icons/Kestrel.png",
     icon_size = 128,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
-    minable = {mining_time = 1, result = "Kestrel"},
+    minable = {mining_time = 1, result = "se-space_Kestrel"},
     max_health = 2000,
 	open_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
     close_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
@@ -366,11 +366,11 @@ data:extend
 ({
 	{
     type = "car",
-    name = "Stealth",
+    name = "se-space_Stealth",
     icon = "__FTL-Ships__/graphics/Icons/Stealth.png",
     icon_size = 128,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
-    minable = {mining_time = 1, result = "Stealth"},
+    minable = {mining_time = 1, result = "se-space_Stealth"},
     max_health = 1500,
 	open_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
     close_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
@@ -548,11 +548,11 @@ data:extend
 ({
 	{
     type = "car",
-    name = "Rigger",
+    name = "se-space_Rigger",
     icon = "__FTL-Ships__/graphics/Icons/Rigger.png",
     icon_size = 128,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
-    minable = {mining_time = 1, result = "Rigger"},
+    minable = {mining_time = 1, result = "se-space_Rigger"},
     max_health = 1000,
 	open_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
     close_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
@@ -729,11 +729,11 @@ data:extend
 ({
 	{
     type = "car",
-    name = "Flagship",
+    name = "se-space_Flagship",
     icon = "__FTL-Ships__/graphics/Icons/Flagship.png",
     icon_size = 128,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
-    minable = {mining_time = 1, result = "Flagship"},
+    minable = {mining_time = 1, result = "se-space_Flagship"},
     max_health = 10000,
 	open_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
     close_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
@@ -942,11 +942,11 @@ data:extend
 ({
 	{
     type = "car",
-    name = "Fighter",
+    name = "se-space_Fighter",
     icon = "__FTL-Ships__/graphics/Icons/Fighter.png",
     icon_size = 128,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
-    minable = {mining_time = 1, result = "Fighter"},
+    minable = {mining_time = 1, result = "se-space_Fighter"},
     max_health = 2500,
 	open_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
     close_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
@@ -1124,11 +1124,11 @@ data:extend
 ({
 	{
     type = "car",
-    name = "Auto_Scout",
+    name = "se-space_Auto_Scout",
     icon = "__FTL-Ships__/graphics/Icons/Auto_Scout.png",
     icon_size = 128,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
-    minable = {mining_time = 1, result = "Auto_Scout"},
+    minable = {mining_time = 1, result = "se-space_Auto_Scout"},
     max_health = 1000,
 	open_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
     close_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
@@ -1306,11 +1306,11 @@ data:extend
 ({
 	{
     type = "car",
-    name = "Auto_Assault",
+    name = "se-space_Auto_Assault",
     icon = "__FTL-Ships__/graphics/Icons/Auto_Assault.png",
     icon_size = 128,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
-    minable = {mining_time = 1, result = "Auto_Assault"},
+    minable = {mining_time = 1, result = "se-space_Auto_Assault"},
     max_health = 1500,
 	open_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
     close_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
@@ -1487,11 +1487,11 @@ data:extend
 ({
 	{
     type = "car",
-    name = "Fed_Cruiser",
+    name = "se-space_Fed_Cruiser",
     icon = "__FTL-Ships__/graphics/Icons/Fed_Cruiser.png",
     icon_size = 128,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
-    minable = {mining_time = 1, result = "Fed_Cruiser"},
+    minable = {mining_time = 1, result = "se-space_Fed_Cruiser"},
     max_health = 3000,
 	open_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
     close_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
@@ -1670,11 +1670,11 @@ data:extend
 ({
 	{
     type = "car",
-    name = "Bomber",
+    name = "se-space_Bomber",
     icon = "__FTL-Ships__/graphics/Icons/Bomber.png",
     icon_size = 128,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
-    minable = {mining_time = 1, result = "Bomber"},
+    minable = {mining_time = 1, result = "se-space_Bomber"},
     max_health = 1750,
 	open_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
     close_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
@@ -1853,11 +1853,11 @@ data:extend
 ({
 	{
     type = "car",
-    name = "Fed_Scout",
+    name = "se-space_Fed_Scout",
     icon = "__FTL-Ships__/graphics/Icons/Fed_Scout.png",
     icon_size = 128,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
-    minable = {mining_time = 1, result = "Fed_Scout"},
+    minable = {mining_time = 1, result = "se-space_Fed_Scout"},
     max_health = 1500,
 	open_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
     close_sound = { filename = "__FTL-Ships__/sounds/door.ogg", volume=1.7 },
