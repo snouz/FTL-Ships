@@ -36,6 +36,22 @@ local function ship_layer(name, scale, scale_shadow, shadow_extra_shift)
           {filename = "__FTL-Ships__/graphics/entity/" .. name .. "_b_Shadow.png", width_in_frames = 8, height_in_frames = 8},
         }
       },
+      {
+        width = 502,
+        height = 502,
+        frame_count = 1,
+        draw_as_glow = true,
+        blend_mode = "additive",
+        direction_count = 128,
+        shift = {0, 0},
+        scale = scale,
+        max_advance = 1,
+        priority = "low",
+        stripes = {
+          {filename = "__FTL-Ships__/graphics/entity/" .. name .. "_a_glow.png", width_in_frames = 8, height_in_frames = 8},
+          {filename = "__FTL-Ships__/graphics/entity/" .. name .. "_b_glow.png", width_in_frames = 8, height_in_frames = 8},
+        }
+      },
     },
   }
 end
