@@ -158,7 +158,7 @@ local function make_ship2(name, health, weight, inv_size, braking_power, size_x,
       max_health = health,
       open_sound = {filename = soundpath .. "door.ogg", volume = 1.7},
       close_sound = {filename = soundpath .. "door.ogg", volume = 1.7},
-      rotation_speed = 0.006,
+      rotation_speed = 0.05,
       weight = weight,
       height = 2,
       selection_priority = 60,
@@ -168,18 +168,18 @@ local function make_ship2(name, health, weight, inv_size, braking_power, size_x,
 	    chunk_exploration_radius = 3,
     	allow_remote_driving = true,
 
-		  --[[entitie.minimap_representation = {
-		    filename = ICONPATH .. "aircraft-minimap-representation.png",
+		  minimap_representation = {
+		    filename = icons .. "minimap/" .. name .. "-minimap-representation.png",
 		    flags = { "icon" },
-		    size = { 40, 40 },
+		    size = { 50, 50 },
 		    scale = 0.5
-		  }
-		  entitie.selected_minimap_representation = {
-		    filename = ICONPATH .. "aircraft-minimap-representation-selected.png",
+		  },
+		  selected_minimap_representation = {
+		    filename = icons .. "minimap/" .. name .. "-selected-minimap-representation.png",
 		    flags = { "icon" },
-		    size = { 40, 40 },
+		    size = { 50, 50 },
 		    scale = 0.5
-		  }]]
+		  },
 
 
       guns = { "tank-cannon", "tank-flamethrower", "rocket-launcher", "rocket-launcher"},
@@ -511,19 +511,20 @@ end
 --make_ship(name, health, weight, inv_size, braking_power, size_x, size_y1, size_y2, energy_effectivity, smoke_dev, smoke_pos, consumption, lightpos, scale, scale_shadow, shadow_extra_shift)
 
 --make_ship("Elite",      2500, 800, 80,  7, 3, 4, 4, 0.9,  {1.5, 0.5}, {2.5, 4.5}, 5,   {4, 30},   0.9, 1.3, 0) --orange
-make_ship2("Elite",      2500, 800, 80,  7, 3, 4, 4, 0.9,  {1.5, 0.5}, {2.5, 4.5}, 5,   {4, 30},   0.9, 1.3, 0) --orange
-make_ship("Kestrel",    2000, 700, 80,  6, 2, 4, 4, 0.9,  {1.5, 0.5}, {2.5, 4.3}, 4.5, {2, 30},   1.25, 1.3, 0.5) --white
-make_ship("Stealth",    1500, 800, 60,  9, 2, 3, 4, 0.9,  {0.5, 0.5}, {0, 4.3},   7,   {3, 30},   1.4, 1.3, -1.2) --grey
-make_ship("Rigger",     1000, 900, 100, 5, 3, 1, 2, 0.7,  {1.5, 0.5}, {2.0, 3},   3,   {3, 30},   1, 0.93, 0.75) --orange
-make_ship("Flagship",   10000,800, 120, 4, 8, 6, 6, 0.7,  {1.5, 0.5}, {0.5, 6.5}, 1.5, {4.0, 30}, 1.5, 2.04, 0) --orange
-make_ship("Fighter",    2500, 800, 80,  7, 3, 4, 4, 0.8,  {1.5, 0.5}, {2.5, 4.5}, 5,   {4, 30},   0.926, 1.3, 0) --orange
-make_ship("Auto_Scout", 1000, 800, 40,  10, 3, 1, 1, 0.8, {1.5, 0.5}, {2.5, 0.5}, 8,   {0.7, 27}, 0.6, 0.83, 0.5) --grey
-make_ship("Auto_Assault",1500,800, 40,  10, 3, 1, 1, 0.8, {0.5, 0.5}, {1.5, 1},   8,   {0.7, 27}, 0.7, 1.12, 0.5) --grey
-make_ship("Fed_Cruiser",3000, 800, 100, 6, 2, 4, 3, 0.7,  {1.5, 0.5}, {3.0, 6.3}, 4,   {2, 33},   1.1, 1.7, -0.7) --white
-make_ship("Bomber",     1750, 800, 40,  9.5, 2, 3, 1, 0.8,{0.5, 0.5}, {1.5, 1.5}, 7.5, {2, 30},   0.9, 1.01, -0.75) --white
-make_ship("Fed_Scout",  1500, 800, 40,  9, 2, 3, 1, 0.8,  {0.5, 0.5}, {2.5, 3},   7,   {1.0, 30}, 0.9, 1.01, -0.75) --white
+make_ship2("Kestrel",    2000, 700, 80,  6, 2, 4, 4, 0.9,  {1.5, 0.5}, {2.5, 4.3}, 4.5, {2, 30},   1.25, 1.3, 0.5) --white
+make_ship2("Stealth",    1500, 800, 60,  9, 2, 3, 4, 0.9,  {0.5, 0.5}, {0, 4.3},   7,   {3, 30},   1.4, 1.3, -1.2) --grey
+make_ship2("Fed_Cruiser",3000, 800, 100, 6, 2, 4, 3, 0.7,  {1.5, 0.5}, {3.0, 6.3}, 4,   {2, 33},   1.1, 1.7, -0.7) --white
+make_ship2("Bomber",     1750, 800, 40,  9.5, 2, 3, 1, 0.8,{0.5, 0.5}, {1.5, 1.5}, 7.5, {2, 30},   0.9, 1.01, -0.75) --white
+make_ship2("Fed_Scout",  1500, 800, 40,  9, 2, 3, 1, 0.8,  {0.5, 0.5}, {2.5, 3},   7,   {1.0, 30}, 0.9, 1.01, -0.75) --white
 
-data.raw["car"]["ftl_ships_Flagship"].energy_source = {
+make_ship2("Auto_Scout", 1000, 800, 40,  10, 3, 1, 1, 0.8, {1.5, 0.5}, {2.5, 0.5}, 8,   {0.7, 27}, 0.6, 0.83, 0.5) --grey
+make_ship2("Auto_Assault",1500,800, 40,  10, 3, 1, 1, 0.8, {0.5, 0.5}, {1.5, 1},   8,   {0.7, 27}, 0.7, 1.12, 0.5) --grey
+make_ship2("Rigger",     1000, 900, 100, 5, 3, 1, 2, 0.7,  {1.5, 0.5}, {2.0, 3},   3,   {3, 30},   1, 0.93, 0.75) --orange
+make_ship2("Fighter",    2500, 800, 80,  7, 3, 4, 4, 0.8,  {1.5, 0.5}, {2.5, 4.5}, 5,   {4, 30},   0.9, 1.3, 0) --orange
+make_ship2("Elite",      2500, 800, 80,  7, 3, 4, 4, 0.9,  {1.5, 0.5}, {2.5, 4.5}, 5,   {4, 30},   0.9, 1.3, 0) --orange
+make_ship2("Flagship",   10000,800, 120, 4, 8, 6, 6, 0.7,  {1.5, 0.5}, {0.5, 6.5}, 1.5, {4.0, 30}, 1.5, 2.04, 0) --orange
+
+--[[data.raw["car"]["ftl_ships_Flagship"].energy_source = {
   type = "burner",
   fuel_categories = {"chemical"},
   effectivity = 0.7,
@@ -566,5 +567,5 @@ data.raw["car"]["ftl_ships_Flagship"].energy_source = {
 }
 
 data.raw["car"]["ftl_ships_Auto_Scout"].rotation_speed = 0.005
-
+]]
 --data.raw["car"]["ftl_ships_Elite"].friction = 0.002
