@@ -84,10 +84,11 @@ end
 
 local function leg(name, scaled)
 	data:extend({
-	  {
+	  --[[{
+	  	
 		  type = "spider-leg",
 		  name = name .. "_leg",
-		  stretch_force_scalar = 100 / scaled,
+		  --stretch_force_scalar = 100 / scaled,
 		  consumption = "6kW",
 		  friction = 0,
 		  localised_name = { "entity-name.spidertron-leg" },
@@ -109,7 +110,33 @@ local function leg(name, scaled)
 		  acceleration_per_energy = 0.60,
 		  graphics_set = create_spidertron_leg_graphics_set(1 * 1, 1),
 		  hip_flexibility = 1,
-		}
+		}]]
+		{
+			type = "spider-leg",
+	    name = name .. "_leg",
+	    consumption = "650kW",
+	    friction = 1,
+	    localised_name = { "entity-name.spidertron-leg" },
+	    collision_box = nil,
+	    collision_mask = {layers = {}},
+	    selection_box = { { -0, -0 }, { 0, 0 } },
+	    icon = "__base__/graphics/icons/spidertron.png",
+	    icon_size = 64,
+	    walking_sound_volume_modifier = 0,
+	    target_position_randomisation_distance = 0,
+	    minimal_step_size = 0,
+	    working_sound = nil,
+	    initial_movement_speed = 1,
+	    movement_acceleration = 1,
+	    knee_height = 2.5,
+	    knee_distance_factor = 0.4,
+	    max_health = 100,
+	    base_position_selection_distance = 1,
+	    movement_based_position_selection_distance = 1,
+	    selectable_in_game = false,
+	    graphics_set = create_spidertron_leg_graphics_set(1, 1),
+	    acceleration_per_energy = 0.80,
+	  }
 	})
 end
 
@@ -123,8 +150,8 @@ local function make_sticker(name, scaled)
 	    duration_in_ticks = 100,
 	    target_movement_modifier_from = 1,
 	    target_movement_modifier_to = 1,
-	    vehicle_speed_modifier_from = 3.2,
-	    vehicle_speed_modifier_to = 1,
+	    vehicle_speed_modifier_from = 2.5 + 10/scaled,
+	    vehicle_speed_modifier_to = 2.5 + 30/scaled,
 	    vehicle_friction_modifier_from = 1,
 	    vehicle_friction_modifier_to = 1,
 	  }
@@ -295,32 +322,32 @@ local function make_ship2(name, scaled)
 			{
 			  type = "void"
 			},
-      --[[energy_source =
+      energy_source =
       {
         type = "burner",
         fuel_categories = {"chemical"},
-        effectivity = energy_effectivity,
+        effectivity = 1, --energy_effectivity,
         fuel_inventory_size = 3,
         smoke =
         {
           {
             name = "car-smoke",
-            deviation = smoke_dev,
+            deviation = {1.5, 0.5},
             frequency = 750,
-            position = smoke_pos,
+            position = {1.5, 0.5},
             starting_frame = 0,
             starting_frame_deviation = 0
           },
           {
             name = "car-smoke",
-            deviation = {-smoke_dev[1], smoke_dev[2]},
+            deviation = {1.5, 0.5},
             frequency = 750,
-            position = {-smoke_pos[1], smoke_pos[2]},
+            position = {1.5, 0.5},
             starting_frame = 0,
             starting_frame_deviation = 0
           }
         }
-      },]]
+      },
       friction = 0.01,
       graphics_set = {
       	render_layer = "air-object",
@@ -359,7 +386,7 @@ local function make_ship2(name, scaled)
 	          walking_group = 1,
 	          leg_hit_the_ground_trigger = nil
 	        },
-	        {
+	        --[[{
 	          leg = name .. "_leg",
 	          mount_position = {-1, 0},
 	          ground_position = {-1, 0},
@@ -377,7 +404,7 @@ local function make_ship2(name, scaled)
 	          ground_position = {1, 0},
 	          walking_group = 1,
 	          leg_hit_the_ground_trigger = nil
-	        },
+	        },]]
 	      }
 	    },
     }

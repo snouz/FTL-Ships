@@ -5,11 +5,13 @@ Date: 2025-06-
     - Update by snouz
   Changes:
     - 2.0 update
+    - Changed the prototype from 'car' to 'spider-vehicle', for better control (code borrowed from Lex's Aircraft)
     - Simplified code
     - Made ships unlock with research
   Graphics:
-    - Adjusted shadows
+    - Adjusted shadow positions
     - Added engine glow
+    - Added custom scaled map markers
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.2
 Date: 2022-07-14

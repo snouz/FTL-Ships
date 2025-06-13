@@ -1,11 +1,11 @@
 {
   "name": "FTL-Ships",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "factorio_version": "2.0",
   "title": "FTL Ships",
   "author": "Pankeko, snouz",
   "homepage": "https://github.com/snouz/FTL-Ships",
-  "description": "Adds some ships from FTL.",
+  "description": "Adds 11 ships from FTL.",
   "dependencies": [
   	"base"
   ]
