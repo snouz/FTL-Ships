@@ -89,19 +89,19 @@ local function on_built_entity(event)
   local entity = event.created_entity or event.entity
   local sticker_name
   if not (entity and entity.valid) then return end
-  sticker_name = entity.name-- .. "_sticker" -- define_sticker_name(entity.name)
+  sticker_name = entity.name -- .. "_sticker" -- define_sticker_name(entity.name)
 
   --entity.force.print(sticker_name .. "1")
-  if not sticker_name then return end
+  if not string.find(sticker_name, "ftl_ships_") then return end
   FTLSCRIPT.new(entity, sticker_name)
 end
 
 local function entity_deployed(entity)
   local sticker_name
   if not (entity and entity.valid) then return end
-  sticker_name = entity.name-- .. "_sticker"
+  sticker_name = entity.name -- .. "_sticker"
   --entity.force.print(sticker_name .. "2")
-  if not sticker_name then return end
+  if not string.find(sticker_name, "ftl_ships_") then return end
   FTLSCRIPT.new(entity, sticker_name)
 end
 

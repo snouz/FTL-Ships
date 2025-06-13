@@ -13,15 +13,50 @@ local function ftl_ships_addResist(type, decrease, percent)
   }
 end
 
+--[[
+local function ftl_ships_make_smoke(name)
+  local smokes = {{0, 0},{0, 0}}
+	if name == "Fed_Scout" then smokes = {{0.5, 0.5}, {2.5, 3}} end
+	if name == "Bomber" then smokes = {{0.5, 0.5}, {1.5, 1.5}} end
+	if name == "Kestrel" then smokes = {{1.5, 0.5}, {2.5, 4.3}} end
+	if name == "Stealth" then smokes = {{0.5, 0.5}, {0, 4.3}} end
+	if name == "Fed_Cruiser" then smokes = {{1.5, 0.5}, {3.0, 6.3}} end
+	if name == "Auto_Scout" then smokes = {{1.5, 0.5}, {2.5, 0.5}} end
+	if name == "Auto_Assault" then smokes = {{0.5, 0.5}, {1.5, 1}} end
+	if name == "Rigger" then smokes = {{1.5, 0.5}, {2.0, 3}} end
+	if name == "Fighter" then smokes = {{1.5, 0.5}, {2.5, 4.5}} end
+	if name == "Elite" then smokes = {{1.5, 0.5}, {2.5, 4.5}} end
+	if name == "Flagship" then smokes = {{1.5, 0.5}, {0.5, 6.5}} end
+	return
+	{
+    {
+      name = "car-smoke",
+      deviation = {smokes[1][1], smokes[1][2]},
+      frequency = 750,
+      position = {smokes[2][1], smokes[2][2]},
+      starting_frame = 0,
+      starting_frame_deviation = 0
+    },
+    {
+      name = "car-smoke",
+      deviation = {-smokes[1][1], smokes[1][2]},
+      frequency = 750,
+      position = {-smokes[2][1], smokes[2][2]},
+      starting_frame = 0,
+      starting_frame_deviation = 0
+    }
+  }
+end
+]]
 
 local function ship_light(name)
 	lightpos = {0,0}
 	thirdlight = nil
+	if name == "Fed_Scout" then lightpos = {1, 30} end
+	if name == "Bomber" then lightpos = {2, 30} end
 	if name == "Kestrel" then lightpos = {3, 36} end
 	if name == "Stealth" then lightpos = {3, 36} end
 	if name == "Fed_Cruiser" then lightpos = {2, 36} end
-	if name == "Bomber" then lightpos = {2, 30} end
-	if name == "Fed_Scout" then lightpos = {1, 30} end
 	if name == "Auto_Scout" then lightpos = {0.7, 30} end
 	if name == "Auto_Assault" then lightpos = {0.7, 30} end
 	if name == "Rigger" then lightpos = {3, 36} end
@@ -84,33 +119,6 @@ end
 
 local function leg(name, scaled)
 	data:extend({
-	  --[[{
-	  	
-		  type = "spider-leg",
-		  name = name .. "_leg",
-		  --stretch_force_scalar = 100 / scaled,
-		  consumption = "6kW",
-		  friction = 0,
-		  localised_name = { "entity-name.spidertron-leg" },
-		  collision_box = nil,
-		  collision_mask = {layers = {}},
-		  selection_box = {{ -0, -0 }, { 0, 0 }},
-		  walking_sound_volume_modifier = 0,
-		  target_position_randomisation_distance = 0,
-		  minimal_step_size = 0,
-		  working_sound = nil,
-		  initial_movement_speed = 1,-- / scaled,
-		  movement_acceleration = 1,-- / scaled,
-		  knee_height = 2.5,
-		  knee_distance_factor = 0.1,
-		  max_health = 100,
-		  base_position_selection_distance = 1,
-		  movement_based_position_selection_distance = 1,
-		  selectable_in_game = false,
-		  acceleration_per_energy = 0.60,
-		  graphics_set = create_spidertron_leg_graphics_set(1 * 1, 1),
-		  hip_flexibility = 1,
-		}]]
 		{
 			type = "spider-leg",
 	    name = name .. "_leg",
@@ -134,13 +142,13 @@ local function leg(name, scaled)
 	    base_position_selection_distance = 1,
 	    movement_based_position_selection_distance = 1,
 	    selectable_in_game = false,
-	    graphics_set = create_spidertron_leg_graphics_set(1, 1),
+	    --graphics_set = create_spidertron_leg_graphics_set(1, 1),
 	    acceleration_per_energy = 0.80,
 	  }
 	})
 end
 
-local function make_sticker(name, scaled)
+local function ftl_ship_make_sticker(name, scaled)
 	data:extend({
 	  {
 	    type = "sticker",
@@ -150,8 +158,8 @@ local function make_sticker(name, scaled)
 	    duration_in_ticks = 100,
 	    target_movement_modifier_from = 1,
 	    target_movement_modifier_to = 1,
-	    vehicle_speed_modifier_from = 2.5 + 10/scaled,
-	    vehicle_speed_modifier_to = 2.5 + 30/scaled,
+	    vehicle_speed_modifier_from = 2 + 7/scaled,
+	    vehicle_speed_modifier_to = 2 + 18/scaled,
 	    vehicle_friction_modifier_from = 1,
 	    vehicle_friction_modifier_to = 1,
 	  }
@@ -173,11 +181,11 @@ end
 local function ship_anim(name)
   --if not shadow_extra_shift then shadow_extra_shift = 0 end
   scale = 1
+	if name == "Fed_Scout" then scale = 0.9 end
+	if name == "Bomber" then scale = 0.9 end
 	if name == "Kestrel" then scale = 1.25 end
 	if name == "Stealth" then scale = 1.4 end
 	if name == "Fed_Cruiser" then scale = 1.1 end
-	if name == "Bomber" then scale = 0.9 end
-	if name == "Fed_Scout" then scale = 0.9 end
 	if name == "Auto_Scout" then scale = 0.6 end
 	if name == "Auto_Assault" then scale = 0.7 end
 	if name == "Rigger" then scale = 1 end
@@ -252,7 +260,7 @@ local function ship_shadow(name)
       {filename = "__FTL-Ships__/graphics/entity/" .. name .. "_b_Shadow.png", width_in_frames = 8, height_in_frames = 8},
     }
   }
- end
+end
 
 
 local function make_ship2(name, scaled)
@@ -271,10 +279,10 @@ local function make_ship2(name, scaled)
       open_sound = {filename = soundpath .. "door.ogg", volume = 1.7},
       close_sound = {filename = soundpath .. "door.ogg", volume = 1.7},
       weight = 150 * scaled,
-      height = 4 + (2/scaled),
+      height = 5 + (0.5 * scaled),
       selection_priority = 60,
       create_ghost_on_death = false,
-	    torso_rotation_speed = 0.025 / scaled,
+	    torso_rotation_speed = 0.002, -- / scaled,
 	    torso_bob_speed = 0.4 / scaled,
 	    chunk_exploration_radius = 3,
     	allow_remote_driving = true,
@@ -282,13 +290,13 @@ local function make_ship2(name, scaled)
 		    filename = icons .. "minimap/" .. name .. "-minimap-representation.png",
 		    flags = { "icon" },
 		    size = { 50, 50 },
-		    scale = 0.4 + (scaled/8),
+		    scale = 0.5 + (scaled/12),
 		  },
 		  selected_minimap_representation = {
 		    filename = icons .. "minimap/" .. name .. "-selected-minimap-representation.png",
 		    flags = { "icon" },
 		    size = { 50, 50 },
-		    scale = 0.4 + (scaled/8)
+		    scale = 0.5 + (scaled/12)
 		  },
       guns = { "tank-cannon", "tank-flamethrower", "rocket-launcher", "rocket-launcher"},
     	chain_shooting_cooldown_modifier = 0.5,
@@ -316,8 +324,8 @@ local function make_ship2(name, scaled)
       collision_mask = {layers = {}},
       selection_box = {{scaled * -scale_mul -scale_add, scaled * -scale_mul -scale_add}, {scaled * scale_mul +scale_add, scaled * scale_mul +scale_add}},
       terrain_friction_modifier = 0,
-      braking_power = "1000kW",--tostring(math.floor(10000000/scaled)) .. "kW",
-	    movement_energy_consumption = "100kW", --"7kW",
+      braking_power = tostring(math.floor(5000/scaled)) .. "kW",
+	    movement_energy_consumption = tostring(math.floor(200 + 100*scaled)) .. "kW", --"7kW",
 	    energy_source =
 			{
 			  type = "void"
@@ -327,28 +335,11 @@ local function make_ship2(name, scaled)
         type = "burner",
         fuel_categories = {"chemical"},
         effectivity = 1, --energy_effectivity,
-        fuel_inventory_size = 3,
-        smoke =
-        {
-          {
-            name = "car-smoke",
-            deviation = {1.5, 0.5},
-            frequency = 750,
-            position = {1.5, 0.5},
-            starting_frame = 0,
-            starting_frame_deviation = 0
-          },
-          {
-            name = "car-smoke",
-            deviation = {1.5, 0.5},
-            frequency = 750,
-            position = {1.5, 0.5},
-            starting_frame = 0,
-            starting_frame_deviation = 0
-          }
-        }
+        fuel_inventory_size = math.ceil(scaled/1.5),
+        --smoke = ftl_ships_make_smoke(name),
+        
       },
-      friction = 0.01,
+      friction = 0.01 + scaled/20,
       graphics_set = {
       	render_layer = "air-object",
 			  final_render_layer = "air-object",
@@ -411,7 +402,7 @@ local function make_ship2(name, scaled)
   })
 	ftl_ship_grid(name, scaled*2, scaled*2)
 	leg(name, scaled)
-	make_sticker(name, scaled)
+	ftl_ship_make_sticker(name, scaled)
 end
 
 
