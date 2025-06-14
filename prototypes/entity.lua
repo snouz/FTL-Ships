@@ -41,7 +41,8 @@ local function ftl_make_tech_item_recipe(name, scaled)
 	    {
 	      {type = "item", name = "steel-plate", amount = 60 * scaled},
 	    },
-	    results = {{type = "item", name ="ftl_ships_" .. name, amount = 1}}
+	    results = {{type = "item", name ="ftl_ships_" .. name, amount = 1}},
+	    energy_required = 0.5 * scaled,
 	  },
 	  {
 	    type = "item-with-entity-data",
@@ -459,25 +460,6 @@ local function make_ship2(name, scaled)
 	          walking_group = 1,
 	          leg_hit_the_ground_trigger = nil
 	        },
-	        --[[{
-	          leg = name .. "_leg",
-	          mount_position = {-1, 0},
-	          ground_position = {-1, 0},
-	          walking_group = 1,
-	          leg_hit_the_ground_trigger = nil
-	        },{
-	          leg = name .. "_leg",
-	          mount_position = {0, 1},
-	          ground_position = {0, 1},
-	          walking_group = 1,
-	          leg_hit_the_ground_trigger = nil
-	        },{
-	          leg = name .. "_leg",
-	          mount_position = {1, 0},
-	          ground_position = {1, 0},
-	          walking_group = 1,
-	          leg_hit_the_ground_trigger = nil
-	        },]]
 	      }
 	    },
     }
@@ -493,7 +475,7 @@ make_ship2("Fed_Scout",   1)
 make_ship2("Bomber",      2)
 make_ship2("Kestrel",     3)
 make_ship2("Stealth",     4)
-make_ship2("Fed_Cruiser", 5)
+make_ship2("Fed_Cruiser", 6)
 
 make_ship2("Auto_Scout",  1)
 make_ship2("Auto_Assault",2)
@@ -537,15 +519,30 @@ table.insert(data.raw.technology["ftl_Flagship_tech"].prerequisites, "ftl_Fighte
 data.raw.recipe["ftl_ships_Elite"].hidden = true
 
 
-local function ftl_add_weapon(name, gun, num, recipe)
+local function ftl_add_weapon(name, gun, num)
 	if not num then num = 1 end
-	if not recipe then recipe = gun end
+	--if not recipe then recipe = gun end
 	if not data.raw.gun[gun] then return end
 	table.insert(data.raw["spider-vehicle"]["ftl_ships_" .. name].guns, gun)
 	if num > 1 then table.insert(data.raw["spider-vehicle"]["ftl_ships_" .. name].guns, gun) end
 	if num > 2 then table.insert(data.raw["spider-vehicle"]["ftl_ships_" .. name].guns, gun) end
 	if num > 3 then table.insert(data.raw["spider-vehicle"]["ftl_ships_" .. name].guns, gun) end
-	if data.raw.recipe[recipe] then table.insert(data.raw.recipe["ftl_ships_" .. name].ingredients, {type = "item", name = recipe, amount = num}) end
+	--if data.raw.recipe[recipe] then table.insert(data.raw.recipe["ftl_ships_" .. name].ingredients, {type = "item", name = recipe, amount = num}) end
+end
+
+local function ftl_ingr_prereq(name, ingredient, num, prereq)
+  if ingredient and num then
+    if data.raw.recipe["ftl_ships_" .. name] then
+    	if (data.raw.item[ingredient] or data.raw.gun[ingredient] or data.raw["item-with-entity-data"][ingredient] or data.raw.module[ingredient]) then
+	    	table.insert(data.raw.recipe["ftl_ships_" .. name].ingredients, {type = "item", name = ingredient, amount = num})
+	    end
+    end
+  end
+  if prereq then
+  	if data.raw.technology["ftl_" .. name .. "_tech"] and data.raw.technology[prereq] then
+  		table.insert(data.raw.technology["ftl_" .. name .. "_tech"].prerequisites, prereq)
+  	end
+  end
 end
 
 --"flamethrower""tank-machine-gun""tank-flamethrower""rocket-launcher"
@@ -557,30 +554,117 @@ end
 
 
 
-ftl_add_weapon("Fed_Scout", "vehicle-machine-gun", 1, "submachine-gun")
-
-ftl_add_weapon("Bomber", "spidertron-rocket-launcher-1", 2, "rocket-launcher")
-
-ftl_add_weapon("Kestrel", "vehicle-machine-gun", 2, "submachine-gun")
-ftl_add_weapon("Kestrel", "spidertron-rocket-launcher-1", 2, "rocket-launcher")
-
-ftl_add_weapon("Stealth", "spidertron-rocket-launcher-1", 4, "rocket-launcher")
-
-ftl_add_weapon("Fed_Cruiser", "spidertron-rocket-launcher-1", 8, "rocket-launcher")
-
-ftl_add_weapon("Auto_Scout", "vehicle-machine-gun", 1, "submachine-gun")
-
-ftl_add_weapon("Auto_Assault", "vehicle-machine-gun", 3, "submachine-gun")
-
-ftl_add_weapon("Rigger", "vehicle-machine-gun", 6, "submachine-gun")
-
-ftl_add_weapon("Fighter", "tank-cannon", 3, "tank")
-ftl_add_weapon("Fighter", "vehicle-machine-gun", 1, "submachine-gun")
-
-ftl_add_weapon("Elite", "tank-cannon", 3, "tank")
-ftl_add_weapon("Elite", "vehicle-machine-gun", 1, "submachine-gun")
+ftl_add_weapon("Fed_Scout", "vehicle-machine-gun", 1)
+ftl_ingr_prereq("Fed_Scout", "submachine-gun", 1)
+ftl_ingr_prereq("Fed_Scout", "advanced-circuit", 50, "advanced-circuit")
+ftl_ingr_prereq("Fed_Scout", "radar", 2, "radar")
 
 
-ftl_add_weapon("Flagship", "tank-cannon", 4, "tank")
-ftl_add_weapon("Flagship", "tank-flamethrower", 2, "flamethrower")
-ftl_add_weapon("Flagship", "spidertron-rocket-launcher-1", 4, "rocket-launcher")
+ftl_add_weapon("Bomber", "spidertron-rocket-launcher-1", 2)
+ftl_ingr_prereq("Bomber", "rocket-launcher", 2, "rocketry")
+ftl_ingr_prereq("Bomber", "advanced-circuit", 10, "advanced-circuit")
+ftl_ingr_prereq("Bomber", "low-density-structure", 5, "low-density-structure")
+ftl_ingr_prereq("Bomber", "ftl_ships_Fed_Scout", 1)
+
+
+
+ftl_add_weapon("Kestrel", "vehicle-machine-gun", 2)
+ftl_ingr_prereq("Kestrel", "submachine-gun", 2)
+ftl_add_weapon("Kestrel", "spidertron-rocket-launcher-1", 2)
+ftl_ingr_prereq("Kestrel", "rocket-launcher", 2, "rocketry")
+ftl_ingr_prereq("Kestrel", "low-density-structure", 5, "low-density-structure")
+ftl_ingr_prereq("Kestrel", "processing-unit", 10, "processing-unit")
+ftl_ingr_prereq("Kestrel", "modular-armor", 1, "modular-armor")
+ftl_ingr_prereq("Kestrel", "ftl_ships_Fed_Scout", 2)
+
+
+
+ftl_add_weapon("Stealth", "spidertron-rocket-launcher-1", 4)
+ftl_ingr_prereq("Stealth", "rocket-launcher", 4, "rocketry")
+ftl_ingr_prereq("Stealth", "low-density-structure", 60, "low-density-structure")
+ftl_ingr_prereq("Stealth", "flying-robot-frame", 50, "robotics")
+ftl_ingr_prereq("Stealth", "speed-module-2", 10, "speed-module-2")
+ftl_ingr_prereq("Stealth", "night-vision-equipment", 5, "night-vision-equipment")
+ftl_ingr_prereq("Stealth", "processing-unit", 20, "processing-unit")
+ftl_ingr_prereq("Stealth", "power-armor", 3, "power-armor")
+ftl_ingr_prereq("Stealth", "ftl_ships_Fed_Scout", 1)
+
+ftl_add_weapon("Fed_Cruiser", "spidertron-rocket-launcher-1", 6)
+ftl_ingr_prereq("Fed_Cruiser", "rocket-launcher", 6, "rocketry")
+ftl_ingr_prereq("Fed_Cruiser", "low-density-structure", 200, "low-density-structure")
+ftl_ingr_prereq("Fed_Cruiser", "flying-robot-frame", 100, "robotics")
+ftl_ingr_prereq("Fed_Cruiser", "speed-module-3", 10, "speed-module-3")
+ftl_ingr_prereq("Fed_Cruiser", "processing-unit", 100, "processing-unit")
+ftl_ingr_prereq("Fed_Cruiser", "power-armor-mk2", 1, "power-armor-mk2")
+ftl_ingr_prereq("Fed_Cruiser", "ftl_ships_Kestrel", 1)
+
+
+
+
+ftl_add_weapon("Auto_Scout", "vehicle-machine-gun", 1)
+ftl_ingr_prereq("Auto_Scout", "submachine-gun", 1)
+ftl_ingr_prereq("Auto_Scout", "advanced-circuit", 50, "advanced-circuit")
+ftl_ingr_prereq("Auto_Scout", "copper-cable", 50)
+
+
+
+ftl_add_weapon("Auto_Assault", "vehicle-machine-gun", 3)
+ftl_ingr_prereq("Auto_Assault", "submachine-gun", 3)
+ftl_ingr_prereq("Auto_Assault", "advanced-circuit", 100, "advanced-circuit")
+ftl_ingr_prereq("Auto_Assault", "processing-unit", 100, "processing-unit")
+ftl_ingr_prereq("Auto_Assault", "copper-cable", 80)
+ftl_ingr_prereq("Auto_Assault", "ftl_ships_Auto_Scout", 1)
+
+
+
+
+ftl_add_weapon("Rigger", "vehicle-machine-gun", 6)
+ftl_ingr_prereq("Rigger", "submachine-gun", 6)
+ftl_ingr_prereq("Rigger", "low-density-structure", 10, "low-density-structure")
+ftl_ingr_prereq("Rigger", "advanced-circuit", 100, "advanced-circuit")
+ftl_ingr_prereq("Rigger", "copper-cable", 90)
+ftl_ingr_prereq("Rigger", "modular-armor", 2, "modular-armor")
+ftl_ingr_prereq("Rigger", "ftl_ships_Auto_Assault", 1)
+
+
+
+
+ftl_add_weapon("Fighter", "tank-cannon", 3)
+ftl_ingr_prereq("Fighter", "tank", 3, "tank")
+ftl_add_weapon("Fighter", "vehicle-machine-gun", 1)
+ftl_ingr_prereq("Fighter", "submachine-gun", 1)
+ftl_ingr_prereq("Fighter", "low-density-structure", 100, "low-density-structure")
+ftl_ingr_prereq("Fighter", "flying-robot-frame", 10, "robotics")
+ftl_ingr_prereq("Fighter", "battery-equipment", 10, "battery-equipment")
+ftl_ingr_prereq("Fighter", "advanced-circuit", 50, "advanced-circuit")
+ftl_ingr_prereq("Fighter", "processing-unit", 100, "processing-unit")
+ftl_ingr_prereq("Fighter", "power-armor", 3, "power-armor")
+
+
+ftl_add_weapon("Elite", "tank-cannon", 3)
+ftl_ingr_prereq("Elite", "tank", 3, "tank")
+ftl_add_weapon("Elite", "vehicle-machine-gun", 1)
+ftl_ingr_prereq("Elite", "submachine-gun", 1)
+ftl_ingr_prereq("Elite", "low-density-structure", 100, "low-density-structure")
+ftl_ingr_prereq("Elite", "flying-robot-frame", 10, "robotics")
+ftl_ingr_prereq("Elite", "battery-equipment", 10, "battery-equipment")
+ftl_ingr_prereq("Elite", "advanced-circuit", 50, "advanced-circuit")
+ftl_ingr_prereq("Elite", "processing-unit", 100, "processing-unit")
+ftl_ingr_prereq("Elite", "power-armor", 3, "power-armor")
+
+
+
+ftl_add_weapon("Flagship", "tank-cannon", 2)
+ftl_ingr_prereq("Flagship", "tank", 2, "tank")
+ftl_add_weapon("Flagship", "tank-flamethrower", 2)
+ftl_ingr_prereq("Flagship", "flamethrower", 2, "flamethrower")
+ftl_add_weapon("Flagship", "spidertron-rocket-launcher-1", 2)
+ftl_ingr_prereq("Flagship", "rocket-launcher", 2, "rocketry")
+ftl_ingr_prereq("Flagship", "low-density-structure", 400, "low-density-structure")
+ftl_ingr_prereq("Flagship", "flying-robot-frame", 200, "robotics")
+ftl_ingr_prereq("Flagship", "speed-module-3", 50, "speed-module-3")
+ftl_ingr_prereq("Flagship", "energy-shield-mk2-equipment", 10, "energy-shield-mk2-equipment")
+ftl_ingr_prereq("Flagship", "processing-unit", 400, "processing-unit")
+ftl_ingr_prereq("Flagship", "power-armor-mk2", 2, "power-armor-mk2")
+--ftl_ingr_prereq("Flagship", "ftl_ships_Fighter", 2)
+ftl_ingr_prereq("Flagship", "ftl_ships_Rigger", 1)
