@@ -589,6 +589,9 @@ ftl_ingr_prereq("Stealth", "processing-unit", 20, "processing-unit")
 ftl_ingr_prereq("Stealth", "power-armor", 3, "power-armor")
 ftl_ingr_prereq("Stealth", "ftl_ships_Fed_Scout", 1)
 
+
+
+
 ftl_add_weapon("Fed_Cruiser", "spidertron-rocket-launcher-1", 6)
 ftl_ingr_prereq("Fed_Cruiser", "rocket-launcher", 6, "rocketry")
 ftl_ingr_prereq("Fed_Cruiser", "low-density-structure", 200, "low-density-structure")
@@ -598,7 +601,7 @@ ftl_ingr_prereq("Fed_Cruiser", "processing-unit", 100, "processing-unit")
 ftl_ingr_prereq("Fed_Cruiser", "power-armor-mk2", 1, "power-armor-mk2")
 ftl_ingr_prereq("Fed_Cruiser", "ftl_ships_Kestrel", 1)
 
-
+----------------------
 
 
 ftl_add_weapon("Auto_Scout", "vehicle-machine-gun", 1)
@@ -630,7 +633,7 @@ ftl_ingr_prereq("Rigger", "ftl_ships_Auto_Assault", 1)
 
 
 ftl_add_weapon("Fighter", "tank-cannon", 3)
-ftl_ingr_prereq("Fighter", "tank", 3, "tank")
+ftl_ingr_prereq("Fighter", "tank", 1, "tank")
 ftl_add_weapon("Fighter", "vehicle-machine-gun", 1)
 ftl_ingr_prereq("Fighter", "submachine-gun", 1)
 ftl_ingr_prereq("Fighter", "low-density-structure", 100, "low-density-structure")
@@ -638,11 +641,11 @@ ftl_ingr_prereq("Fighter", "flying-robot-frame", 10, "robotics")
 ftl_ingr_prereq("Fighter", "battery-equipment", 10, "battery-equipment")
 ftl_ingr_prereq("Fighter", "advanced-circuit", 50, "advanced-circuit")
 ftl_ingr_prereq("Fighter", "processing-unit", 100, "processing-unit")
-ftl_ingr_prereq("Fighter", "power-armor", 3, "power-armor")
+ftl_ingr_prereq("Fighter", "power-armor", 1, "power-armor")
 
 
 ftl_add_weapon("Elite", "tank-cannon", 3)
-ftl_ingr_prereq("Elite", "tank", 3, "tank")
+ftl_ingr_prereq("Elite", "tank", 1, "tank")
 ftl_add_weapon("Elite", "vehicle-machine-gun", 1)
 ftl_ingr_prereq("Elite", "submachine-gun", 1)
 ftl_ingr_prereq("Elite", "low-density-structure", 100, "low-density-structure")
@@ -650,14 +653,14 @@ ftl_ingr_prereq("Elite", "flying-robot-frame", 10, "robotics")
 ftl_ingr_prereq("Elite", "battery-equipment", 10, "battery-equipment")
 ftl_ingr_prereq("Elite", "advanced-circuit", 50, "advanced-circuit")
 ftl_ingr_prereq("Elite", "processing-unit", 100, "processing-unit")
-ftl_ingr_prereq("Elite", "power-armor", 3, "power-armor")
+ftl_ingr_prereq("Elite", "power-armor", 1, "power-armor")
 
 
 
-ftl_add_weapon("Flagship", "tank-cannon", 2)
-ftl_ingr_prereq("Flagship", "tank", 2, "tank")
-ftl_add_weapon("Flagship", "tank-flamethrower", 2)
-ftl_ingr_prereq("Flagship", "flamethrower", 2, "flamethrower")
+ftl_add_weapon("Flagship", "tank-cannon", 3)
+--ftl_ingr_prereq("Flagship", "tank", 2, "tank")
+ftl_add_weapon("Flagship", "tank-flamethrower", 1)
+ftl_ingr_prereq("Flagship", "flamethrower", 1, "flamethrower")
 ftl_add_weapon("Flagship", "spidertron-rocket-launcher-1", 2)
 ftl_ingr_prereq("Flagship", "rocket-launcher", 2, "rocketry")
 ftl_ingr_prereq("Flagship", "low-density-structure", 400, "low-density-structure")
@@ -666,5 +669,5 @@ ftl_ingr_prereq("Flagship", "speed-module-3", 50, "speed-module-3")
 ftl_ingr_prereq("Flagship", "energy-shield-mk2-equipment", 10, "energy-shield-mk2-equipment")
 ftl_ingr_prereq("Flagship", "processing-unit", 400, "processing-unit")
 ftl_ingr_prereq("Flagship", "power-armor-mk2", 2, "power-armor-mk2")
---ftl_ingr_prereq("Flagship", "ftl_ships_Fighter", 2)
-ftl_ingr_prereq("Flagship", "ftl_ships_Rigger", 1)
+ftl_ingr_prereq("Flagship", "ftl_ships_Fighter", 1)
+--ftl_ingr_prereq("Flagship", "ftl_ships_Rigger", 1)
