@@ -5,7 +5,7 @@
   "title": "FTL Ships",
   "author": "Pankeko, snouz",
   "homepage": "https://github.com/snouz/FTL-Ships",
-  "description": "Adds 11 ships from FTL.",
+  "description": "Adds 10 ships from FTL.",
   "dependencies": [
   	"base"
   ]

@@ -4,6 +4,14 @@ local icons = "__FTL-Ships__/graphics/icons/"
 local techicons = "__FTL-Ships__/graphics/technology/"
 local soundpath = "__FTL-Ships__/sounds/"
 
+data:extend({
+  {
+    type = "item-subgroup",
+    name = "ftl_transport",
+    group = "logistics",
+    order = "fa"
+  },
+})
 
 
 local function ftl_make_tech_item_recipe(name, scaled)
@@ -94,42 +102,6 @@ local function ftl_ships_addResist(type, decrease, percent)
     percent = percent
   }
 end
-
---[[
-local function ftl_ships_make_smoke(name)
-  local smokes = {{0, 0},{0, 0}}
-	if name == "Fed_Scout" then smokes = {{0.5, 0.5}, {2.5, 3}} end
-	if name == "Bomber" then smokes = {{0.5, 0.5}, {1.5, 1.5}} end
-	if name == "Kestrel" then smokes = {{1.5, 0.5}, {2.5, 4.3}} end
-	if name == "Stealth" then smokes = {{0.5, 0.5}, {0, 4.3}} end
-	if name == "Fed_Cruiser" then smokes = {{1.5, 0.5}, {3.0, 6.3}} end
-	if name == "Auto_Scout" then smokes = {{1.5, 0.5}, {2.5, 0.5}} end
-	if name == "Auto_Assault" then smokes = {{0.5, 0.5}, {1.5, 1}} end
-	if name == "Rigger" then smokes = {{1.5, 0.5}, {2.0, 3}} end
-	if name == "Fighter" then smokes = {{1.5, 0.5}, {2.5, 4.5}} end
-	if name == "Elite" then smokes = {{1.5, 0.5}, {2.5, 4.5}} end
-	if name == "Flagship" then smokes = {{1.5, 0.5}, {0.5, 6.5}} end
-	return
-	{
-    {
-      name = "car-smoke",
-      deviation = {smokes[1][1], smokes[1][2]},
-      frequency = 750,
-      position = {smokes[2][1], smokes[2][2]},
-      starting_frame = 0,
-      starting_frame_deviation = 0
-    },
-    {
-      name = "car-smoke",
-      deviation = {-smokes[1][1], smokes[1][2]},
-      frequency = 750,
-      position = {-smokes[2][1], smokes[2][2]},
-      starting_frame = 0,
-      starting_frame_deviation = 0
-    }
-  }
-end
-]]
 
 local function ship_light(name)
 	lightpos = {0,0}
@@ -444,10 +416,11 @@ local function make_ship2(name, scaled)
       vehicle_impact_sound =  {filename = soundpath .. "shield_hit2.ogg", volume = 0.65},
       working_sound =
       {
-        sound = {filename = soundpath .. "engines_on.ogg", volume = 1},
+        sound = {filename = soundpath .. "engines_on.ogg", volume = 1, min_speed = 1, max_speed = 1.5},
         activate_sound = {filename = soundpath .. "ftl_jump_start.ogg", volume = 0.6},
         deactivate_sound = {filename = soundpath .. "engines_off.ogg", volume = 0.9},
         match_speed_to_activity = true,
+        activity_to_speed_modifiers = { multiplier = 0.8, minimum = 1.0, maximum = 1.6, offset = 0.1, }
       },
       spider_engine =
 	    {
@@ -558,6 +531,8 @@ ftl_add_weapon("Fed_Scout", "vehicle-machine-gun", 1)
 ftl_ingr_prereq("Fed_Scout", "submachine-gun", 1)
 ftl_ingr_prereq("Fed_Scout", "advanced-circuit", 50, "advanced-circuit")
 ftl_ingr_prereq("Fed_Scout", "radar", 2, "radar")
+ftl_ingr_prereq("Fed_Scout", "engine-unit", 5, "engine")
+
 
 
 ftl_add_weapon("Bomber", "spidertron-rocket-launcher-1", 2)
@@ -565,6 +540,9 @@ ftl_ingr_prereq("Bomber", "rocket-launcher", 2, "rocketry")
 ftl_ingr_prereq("Bomber", "advanced-circuit", 10, "advanced-circuit")
 ftl_ingr_prereq("Bomber", "low-density-structure", 5, "low-density-structure")
 ftl_ingr_prereq("Bomber", "ftl_ships_Fed_Scout", 1)
+
+ftl_ingr_prereq("Bomber", "electric-engine-unit", 5, "electric-engine")
+
 
 
 
@@ -575,6 +553,7 @@ ftl_ingr_prereq("Kestrel", "rocket-launcher", 2, "rocketry")
 ftl_ingr_prereq("Kestrel", "low-density-structure", 5, "low-density-structure")
 ftl_ingr_prereq("Kestrel", "processing-unit", 10, "processing-unit")
 ftl_ingr_prereq("Kestrel", "modular-armor", 1, "modular-armor")
+ftl_ingr_prereq("Kestrel", "electric-engine-unit", 10, "electric-engine")
 ftl_ingr_prereq("Kestrel", "ftl_ships_Fed_Scout", 2)
 
 
@@ -599,6 +578,7 @@ ftl_ingr_prereq("Fed_Cruiser", "flying-robot-frame", 100, "robotics")
 ftl_ingr_prereq("Fed_Cruiser", "speed-module-3", 10, "speed-module-3")
 ftl_ingr_prereq("Fed_Cruiser", "processing-unit", 100, "processing-unit")
 ftl_ingr_prereq("Fed_Cruiser", "power-armor-mk2", 1, "power-armor-mk2")
+ftl_ingr_prereq("Fed_Cruiser", "electric-engine-unit", 15, "electric-engine")
 ftl_ingr_prereq("Fed_Cruiser", "ftl_ships_Kestrel", 1)
 
 ----------------------
@@ -608,6 +588,7 @@ ftl_add_weapon("Auto_Scout", "vehicle-machine-gun", 1)
 ftl_ingr_prereq("Auto_Scout", "submachine-gun", 1)
 ftl_ingr_prereq("Auto_Scout", "advanced-circuit", 50, "advanced-circuit")
 ftl_ingr_prereq("Auto_Scout", "copper-cable", 50)
+ftl_ingr_prereq("Auto_Scout", "engine-unit", 5, "engine")
 
 
 
@@ -616,6 +597,7 @@ ftl_ingr_prereq("Auto_Assault", "submachine-gun", 3)
 ftl_ingr_prereq("Auto_Assault", "advanced-circuit", 100, "advanced-circuit")
 ftl_ingr_prereq("Auto_Assault", "processing-unit", 100, "processing-unit")
 ftl_ingr_prereq("Auto_Assault", "copper-cable", 80)
+ftl_ingr_prereq("Auto_Assault", "engine-unit", 15, "engine")
 ftl_ingr_prereq("Auto_Assault", "ftl_ships_Auto_Scout", 1)
 
 
@@ -627,6 +609,7 @@ ftl_ingr_prereq("Rigger", "low-density-structure", 10, "low-density-structure")
 ftl_ingr_prereq("Rigger", "advanced-circuit", 100, "advanced-circuit")
 ftl_ingr_prereq("Rigger", "copper-cable", 90)
 ftl_ingr_prereq("Rigger", "modular-armor", 2, "modular-armor")
+ftl_ingr_prereq("Rigger", "engine-unit", 20, "engine")
 ftl_ingr_prereq("Rigger", "ftl_ships_Auto_Assault", 1)
 
 

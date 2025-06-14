@@ -1,18 +1,25 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.0
-Date: 2025-06-
+Date: 2025-06-14
   Info:
     - Update by snouz
   Changes:
     - 2.0 update
     - Changed the prototype from 'car' to 'spider-vehicle', for better control (code borrowed from Lex's Aircraft)
-    - Simplified code
-    - Added one research by ship
+    - Added one research by ship, unlocked at different stages of the game, following 2 tech trees (fed/rebel)
     - Merged almost identical Elite and Fighter ships (to round the number to 10)
+    - Reworked all recipes
+    - Reworked all stats and guns
+    - Simplified code
   Graphics:
     - Adjusted shadow positions
     - Added engine glow
     - Added custom scaled map markers
+    - Optimized graphics size
+    - New thumbnail
+    - New icons / tech icons
+  Sound
+    - Added custom engine sound
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.2
 Date: 2022-07-14

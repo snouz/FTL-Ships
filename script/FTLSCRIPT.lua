@@ -65,26 +65,6 @@ function FTLSCRIPT:clear_speed_sticker()
   self.speed_sticker = nil
 end
 
---[[local function define_sticker_name(entity_name)
-  local sticker_name = entity_name .. "_sticker"
-  if entity_name == "lex-flying-cargo" or entity_name == "lex-flying-cargo-0" then
-    sticker_name = "lex-flying-cargo"
-  elseif entity_name == "lex-flying-gunship" or
-      entity_name == "lex-flying-gunship-lex-machine-gun" or
-      entity_name == "lex-flying-gunship-lex-rocket-launcher" then
-    sticker_name = "lex-flying-gunship"
-  elseif entity_name == "lex-flying-heavyship" or
-      entity_name == "lex-flying-heavyship-lex-medium-rocket-launcher" or
-      entity_name == "lex-flying-heavyship-heavy-rocket-launcher" or
-      entity_name == "lex-flying-heavyship-lex-advanced-machine-gun" or
-      entity_name == "lex-flying-heavyship-lex-cannon" then
-    sticker_name = "lex-flying-heavyship"
-  else
-    return
-  end
-  return sticker_name
-end]]
-
 local function on_built_entity(event)
   local entity = event.created_entity or event.entity
   local sticker_name
@@ -104,18 +84,6 @@ local function entity_deployed(entity)
   if not string.find(sticker_name, "ftl_ships_") then return end
   FTLSCRIPT.new(entity, sticker_name)
 end
-
---[[remote.add_interface(
-  "lex-aircraft-sticker",
-  {
-    on_entity_deployed = function(ev)
-      local entity = ev.entity
-      if entity.valid and (entity.type == "spider-vehicle") then
-        entity_deployed(entity)
-      end
-    end
-  }
-)]]
 
 local lib = {}
 
