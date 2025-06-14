@@ -1,4 +1,4 @@
-data:extend({
+--[[data:extend({
   {
     type = "equipment-grid",
     name = "ftl-equipment-grid",
@@ -7,3 +7,4 @@ data:extend({
     equipment_categories = {"armor"}
   },
 })
+]]

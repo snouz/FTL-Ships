@@ -1,4 +1,4 @@
-local techicons = "__FTL-Ships__/graphics/technology/"
+--[[local techicons = "__FTL-Ships__/graphics/technology/"
 
 data:extend({ 
   {
@@ -64,4 +64,4 @@ data:extend({
       time = 10
     },
   }, 
-})
+})]]

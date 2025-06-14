@@ -8,7 +8,7 @@ data:extend({
     order = "fa"
   },
 })
-
+--[[
 
 data:extend({
   {
@@ -314,9 +314,9 @@ data:extend({
     icon = icons .. "Flagship.png",
     icon_size = 64,
     subgroup = "ftl_transport",
-    order = "b[rebel]-f[Flagship]",
+    order = "b[rebel]-f[]",
     place_result = "ftl_ships_Flagship",
     stack_size = 1
   }
 })
-
+]]

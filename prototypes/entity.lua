@@ -1,9 +1,90 @@
 --local util = require("__core__/lualib/util")
 
 local icons = "__FTL-Ships__/graphics/icons/"
+local techicons = "__FTL-Ships__/graphics/technology/"
 local soundpath = "__FTL-Ships__/sounds/"
 
-require("__base__/prototypes/entity/spidertron-animations")
+
+
+local function ftl_make_tech_item_recipe(name, scaled)
+  local order = "a"
+	if name == "Fed_Scout" then
+		order = "a[fed]-a[" .. name .. "]"
+	elseif name == "Bomber" then
+		order = "a[fed]-b[" .. name .. "]"
+	elseif name == "Kestrel" then
+		order = "a[fed]-c[" .. name .. "]"
+	elseif name == "Stealth" then
+		order = "a[fed]-d[" .. name .. "]"
+	elseif name == "Fed_Cruiser" then
+		order = "a[fed]-e[" .. name .. "]"
+	elseif name == "Auto_Scout" then
+		order = "b[rebel]-a[" .. name .. "]"
+	elseif name == "Auto_Assault" then
+		order = "b[rebel]-b[" .. name .. "]"
+	elseif name == "Rigger" then
+		order = "b[rebel]-c[" .. name .. "]"
+	elseif name == "Fighter" then
+		order = "b[rebel]-d[" .. name .. "]"
+	elseif name == "Elite" then
+		order = "b[rebel]-e[" .. name .. "]"
+	elseif name == "Flagship" then
+		order = "b[rebel]-f[" .. name .. "]"
+	end
+
+	data:extend({
+	  {
+	    type = "recipe",
+	    name = "ftl_ships_" .. name,
+	    enabled = false,
+	    ingredients =
+	    {
+	      {type = "item", name = "steel-plate", amount = 60 * scaled},
+	    },
+	    results = {{type = "item", name ="ftl_ships_" .. name, amount = 1}}
+	  },
+	  {
+	    type = "item-with-entity-data",
+	    name = "ftl_ships_" .. name,
+	    icon = icons .. name .. ".png",
+	    icon_size = 64,
+	    subgroup = "ftl_transport",
+	    order = order,
+	    place_result = "ftl_ships_" .. name,
+	    stack_size = 1,
+	    weight = 100 * scaled * kg,
+	  }
+	})
+	if name ~= "Elite" then
+		data:extend({
+		  {
+		    type = "technology",
+		    name = "ftl_" .. name .. "_tech",
+		    icon = techicons .. "ftl_" .. name .. "_tech.png",
+		    icon_size = 256,
+		    order = order,
+		    effects = {
+		      {
+		        type = "unlock-recipe",
+		        recipe = "ftl_ships_" .. name,
+		      },
+		    },
+		    prerequisites = {},
+		    unit = {
+		      count = 100 * scaled * scaled,
+		      ingredients = {
+		        {"automation-science-pack", 1},
+		        {"logistic-science-pack", 1},
+		        {"military-science-pack", 1},
+		      },
+		      time = 10 * scaled
+		    },
+		  },
+		})
+	end
+
+end
+
 
 local function ftl_ships_addResist(type, decrease, percent)
   return {
@@ -273,7 +354,7 @@ local function make_ship2(name, scaled)
       name = "ftl_ships_" .. name,
       icon = icons .. name ..".png",
       icon_size = 64,
-      flags =  { "placeable-neutral", "player-creation", "placeable-off-grid", "no-automated-item-removal", "no-automated-item-insertion" }, --{"placeable-neutral", "player-creation", "placeable-off-grid"},
+      flags =  { "placeable-neutral", "player-creation", "placeable-off-grid"},-- "no-automated-item-removal", "no-automated-item-insertion" }, --{"placeable-neutral", "player-creation", "placeable-off-grid"},
       minable = {mining_time = 1, result = "ftl_ships_" .. name},
       max_health = 500 * scaled,
       open_sound = {filename = soundpath .. "door.ogg", volume = 1.7},
@@ -298,8 +379,8 @@ local function make_ship2(name, scaled)
 		    size = { 50, 50 },
 		    scale = 0.5 + (scaled/12)
 		  },
-      guns = { "tank-cannon", "tank-flamethrower", "rocket-launcher", "rocket-launcher"},
-    	chain_shooting_cooldown_modifier = 0.5,
+      guns = {},
+    	chain_shooting_cooldown_modifier = 1/scaled,
 	    automatic_weapon_cycling = true,
       inventory_size = 10 * scaled,
       trash_inventory_size = 2 * scaled,
@@ -323,6 +404,7 @@ local function make_ship2(name, scaled)
       collision_box = {{scaled * -scale_mul -0.3 -scale_add, scaled * -scale_mul -0.3 -scale_add}, {scaled * scale_mul -0.3 +scale_add, scaled * scale_mul -0.3 +scale_add}},
       collision_mask = {layers = {}},
       selection_box = {{scaled * -scale_mul -scale_add, scaled * -scale_mul -scale_add}, {scaled * scale_mul +scale_add, scaled * scale_mul +scale_add}},
+      drawing_box_vertical_extension = 3,
       terrain_friction_modifier = 0,
       braking_power = tostring(math.floor(5000/scaled)) .. "kW",
 	    movement_energy_consumption = tostring(math.floor(200 + 100*scaled)) .. "kW", --"7kW",
@@ -403,14 +485,15 @@ local function make_ship2(name, scaled)
 	ftl_ship_grid(name, scaled*2, scaled*2)
 	leg(name, scaled)
 	ftl_ship_make_sticker(name, scaled)
+	ftl_make_tech_item_recipe(name, scaled)
 end
 
 
 make_ship2("Fed_Scout",   1)
 make_ship2("Bomber",      2)
 make_ship2("Kestrel",     3)
-make_ship2("Stealth",     1)
-make_ship2("Fed_Cruiser", 4)
+make_ship2("Stealth",     4)
+make_ship2("Fed_Cruiser", 5)
 
 make_ship2("Auto_Scout",  1)
 make_ship2("Auto_Assault",2)
@@ -419,14 +502,15 @@ make_ship2("Fighter",     5)
 make_ship2("Elite",       5)
 make_ship2("Flagship",    10)
 
---make_ship(name, health, weight, inv_size, braking_power, size_x, size_y1, size_y2, energy_effectivity, smoke_dev, smoke_pos, consumption, lightpos, scale, scale_shadow, shadow_extra_shift)
+
+
 --[[
---make_ship("Elite",      2500, 800, 80,  7, 3, 4, 4, 0.9,  {1.5, 0.5}, {2.5, 4.5}, 5,   {4, 30},   0.9, 1.3, 0) --orange
+make_ship(name, health, weight, inv_size, braking_power, size_x, size_y1, size_y2, energy_effectivity, smoke_dev, smoke_pos, consumption, lightpos, scale, scale_shadow, shadow_extra_shift)
+make_ship2("Fed_Scout",  1500, 800, 40,  9, 2, 3, 1, 0.8,  {0.5, 0.5}, {2.5, 3},   7,   {1.0, 30}, 0.9, 1.01, -0.75) --white
+make_ship2("Bomber",     1750, 800, 40,  9.5, 2, 3, 1, 0.8,{0.5, 0.5}, {1.5, 1.5}, 7.5, {2, 30},   0.9, 1.01, -0.75) --white
 make_ship2("Kestrel",    2000, 700, 80,  6, 2, 4, 4, 0.9,  {1.5, 0.5}, {2.5, 4.3}, 4.5, {2, 30},   1.25, 1.3, 0.5) --white
 make_ship2("Stealth",    1500, 800, 60,  9, 2, 3, 4, 0.9,  {0.5, 0.5}, {0, 4.3},   7,   {3, 30},   1.4, 1.3, -1.2) --grey
 make_ship2("Fed_Cruiser",3000, 800, 100, 6, 2, 4, 3, 0.7,  {1.5, 0.5}, {3.0, 6.3}, 4,   {2, 33},   1.1, 1.7, -0.7) --white
-make_ship2("Bomber",     1750, 800, 40,  9.5, 2, 3, 1, 0.8,{0.5, 0.5}, {1.5, 1.5}, 7.5, {2, 30},   0.9, 1.01, -0.75) --white
-make_ship2("Fed_Scout",  1500, 800, 40,  9, 2, 3, 1, 0.8,  {0.5, 0.5}, {2.5, 3},   7,   {1.0, 30}, 0.9, 1.01, -0.75) --white
 
 make_ship2("Auto_Scout", 1000, 800, 40,  10, 3, 1, 1, 0.8, {1.5, 0.5}, {2.5, 0.5}, 8,   {0.7, 27}, 0.6, 0.83, 0.5) --grey
 make_ship2("Auto_Assault",1500,800, 40,  10, 3, 1, 1, 0.8, {0.5, 0.5}, {1.5, 1},   8,   {0.7, 27}, 0.7, 1.12, 0.5) --grey
@@ -435,48 +519,68 @@ make_ship2("Fighter",    2500, 800, 80,  7, 3, 4, 4, 0.8,  {1.5, 0.5}, {2.5, 4.5
 make_ship2("Elite",      2500, 800, 80,  7, 3, 4, 4, 0.9,  {1.5, 0.5}, {2.5, 4.5}, 5,   {4, 30},   0.9, 1.3, 0) --orange
 make_ship2("Flagship",   10000,800, 120, 4, 8, 6, 6, 0.7,  {1.5, 0.5}, {0.5, 6.5}, 1.5, {4.0, 30}, 1.5, 2.04, 0) --orange
 ]]
---[[data.raw["car"]["ftl_ships_Flagship"].energy_source = {
-  type = "burner",
-  fuel_categories = {"chemical"},
-  effectivity = 0.7,
-  fuel_inventory_size = 3,
-  smoke =
-  {
-    {
-      name = "car-smoke",
-      deviation = {1.5, 0.5},
-      frequency = 750,
-      position = {0.5, 6.5},
-      starting_frame = 0,
-      starting_frame_deviation = 0
-    },
-    {
-      name = "car-smoke",
-      deviation = {-1.5, 0.5},
-      frequency = 750,
-      position = {-0.5, 6.5},
-      starting_frame = 0,
-      starting_frame_deviation = 0
-    },
-    {
-      name = "car-smoke",
-      deviation = {1.5, 0.5},
-      frequency = 750,
-      position = {8.0, 4.5},
-      starting_frame = 0,
-      starting_frame_deviation = 0
-    },
-    {
-      name = "car-smoke",
-      deviation = {-1.5, 0.5},
-      frequency = 750,
-      position = {-8.0, 4.5},
-      starting_frame = 0,
-      starting_frame_deviation = 0
-    }
-  }
-}
 
-data.raw["car"]["ftl_ships_Auto_Scout"].rotation_speed = 0.005
-]]
---data.raw["car"]["ftl_ships_Elite"].friction = 0.002
+
+
+table.insert(data.raw.technology["ftl_Fed_Scout_tech"].prerequisites, "automobilism")
+table.insert(data.raw.technology["ftl_Bomber_tech"].prerequisites, "ftl_Fed_Scout_tech")
+table.insert(data.raw.technology["ftl_Kestrel_tech"].prerequisites, "ftl_Bomber_tech")
+table.insert(data.raw.technology["ftl_Stealth_tech"].prerequisites, "ftl_Kestrel_tech")
+table.insert(data.raw.technology["ftl_Fed_Cruiser_tech"].prerequisites, "ftl_Stealth_tech")
+
+table.insert(data.raw.technology["ftl_Auto_Scout_tech"].prerequisites, "automobilism")
+table.insert(data.raw.technology["ftl_Auto_Assault_tech"].prerequisites, "ftl_Auto_Scout_tech")
+table.insert(data.raw.technology["ftl_Rigger_tech"].prerequisites, "ftl_Auto_Assault_tech")
+table.insert(data.raw.technology["ftl_Fighter_tech"].prerequisites, "ftl_Rigger_tech")
+table.insert(data.raw.technology["ftl_Flagship_tech"].prerequisites, "ftl_Fighter_tech")
+
+data.raw.recipe["ftl_ships_Elite"].hidden = true
+
+
+local function ftl_add_weapon(name, gun, num, recipe)
+	if not num then num = 1 end
+	if not recipe then recipe = gun end
+	if not data.raw.gun[gun] then return end
+	table.insert(data.raw["spider-vehicle"]["ftl_ships_" .. name].guns, gun)
+	if num > 1 then table.insert(data.raw["spider-vehicle"]["ftl_ships_" .. name].guns, gun) end
+	if num > 2 then table.insert(data.raw["spider-vehicle"]["ftl_ships_" .. name].guns, gun) end
+	if num > 3 then table.insert(data.raw["spider-vehicle"]["ftl_ships_" .. name].guns, gun) end
+	if data.raw.recipe[recipe] then table.insert(data.raw.recipe["ftl_ships_" .. name].ingredients, {type = "item", name = recipe, amount = num}) end
+end
+
+--"flamethrower""tank-machine-gun""tank-flamethrower""rocket-launcher"
+--"combat-shotgun""shotgun""tank-cannon"
+--"spidertron-rocket-launcher-1""spidertron-rocket-launcher-2""spidertron-rocket-launcher-3""spidertron-rocket-launcher-4"
+--"submachine-gun""vehicle-machine-gun"
+
+--ftl_add_weapon("Bomber", "tank-cannon")
+
+
+
+ftl_add_weapon("Fed_Scout", "vehicle-machine-gun", 1, "submachine-gun")
+
+ftl_add_weapon("Bomber", "spidertron-rocket-launcher-1", 2, "rocket-launcher")
+
+ftl_add_weapon("Kestrel", "vehicle-machine-gun", 2, "submachine-gun")
+ftl_add_weapon("Kestrel", "spidertron-rocket-launcher-1", 2, "rocket-launcher")
+
+ftl_add_weapon("Stealth", "spidertron-rocket-launcher-1", 4, "rocket-launcher")
+
+ftl_add_weapon("Fed_Cruiser", "spidertron-rocket-launcher-1", 8, "rocket-launcher")
+
+ftl_add_weapon("Auto_Scout", "vehicle-machine-gun", 1, "submachine-gun")
+
+ftl_add_weapon("Auto_Assault", "vehicle-machine-gun", 3, "submachine-gun")
+
+ftl_add_weapon("Rigger", "vehicle-machine-gun", 6, "submachine-gun")
+
+ftl_add_weapon("Fighter", "tank-cannon", 3, "tank")
+ftl_add_weapon("Fighter", "vehicle-machine-gun", 1, "submachine-gun")
+
+ftl_add_weapon("Elite", "tank-cannon", 3, "tank")
+ftl_add_weapon("Elite", "vehicle-machine-gun", 1, "submachine-gun")
+
+
+ftl_add_weapon("Flagship", "tank-cannon", 4, "tank")
+ftl_add_weapon("Flagship", "tank-flamethrower", 2, "flamethrower")
+ftl_add_weapon("Flagship", "spidertron-rocket-launcher-1", 4, "rocket-launcher")

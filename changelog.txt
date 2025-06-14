@@ -7,7 +7,8 @@ Date: 2025-06-
     - 2.0 update
     - Changed the prototype from 'car' to 'spider-vehicle', for better control (code borrowed from Lex's Aircraft)
     - Simplified code
-    - Made ships unlock with research
+    - Added one research by ship
+    - Merged almost identical Elite and Fighter ships (to round the number to 10)
   Graphics:
     - Adjusted shadow positions
     - Added engine glow
