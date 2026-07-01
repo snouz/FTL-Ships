@@ -55,7 +55,7 @@ function FTLSCRIPT:get_speed_sticker(name)
     force = self.entity.force,
     position = self.entity.position
   }
-  self.speed_sticker.active = false
+  --self.speed_sticker.active = false
   return self.speed_sticker
 end
 

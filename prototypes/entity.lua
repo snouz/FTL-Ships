@@ -379,7 +379,9 @@ local function make_ship2(name, scaled)
       selection_box = {{scaled * -scale_mul -scale_add, scaled * -scale_mul -scale_add}, {scaled * scale_mul +scale_add, scaled * scale_mul +scale_add}},
       drawing_box_vertical_extension = 3,
       terrain_friction_modifier = 0,
-      braking_power = tostring(math.floor(5000/scaled)) .. "kW",
+      --braking_power = tostring(math.floor(5000/scaled)) .. "kW",
+      braking_force = 5000/scaled,
+      friction_force = 2e-3,
 	    movement_energy_consumption = tostring(math.floor(200 + 100*scaled)) .. "kW", --"7kW",
 	    energy_source =
 			{
